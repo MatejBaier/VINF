@@ -1,0 +1,1872 @@
+{
+  "african-bullfrog": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "African Bullfrog",
+      "scientific_name": "Pyxicephalus adspersus",
+      "class": "Amphibia",
+      "taxon_level": "Species",
+      "summary": "A very large, heavy-bodied terrestrial frog of southern and parts of eastern Africa, famous for explosive breeding after rains, strong digging behavior, and pronounced sexual size dimorphism. Males can be exceptionally robust and are known for aggressive defense of breeding sites and, in some reports, of tadpoles.",
+      "status": "Least Concern",
+      "lifespan_wild": "7–15 years",
+      "lifespan_captivity": "15–25 years",
+      "social": "Breeding aggregation (chorus)",
+      "group_size": 1,
+      "activity": "Nocturnal, Crepuscular, Cathemeral",
+      "diet": "Carnivore",
+      "domestication": "Wild",
+      "danger_level": "Moderate",
+      "as_pet": "Suitable as Pet",
+      "cultural_significance": "African Bullfrog (Pyxicephalus adspersus) is seen across southern and eastern Africa as a \"rain animal\" whose call shows storms and the return of water. People respect it for the fertility of the land. In the pet trade it is called the \"pixie frog\"."
+    },
+    "lists": {
+      "locations": {
+        "count": 7,
+        "first": "Angola"
+      },
+      "also_known_as": {
+        "count": 3,
+        "first": "Pixie frog"
+      },
+      "distinguishing_features": {
+        "count": 5,
+        "first": "Very large, stout-bodied frog; males markedly larger than females"
+      },
+      "communication": {
+        "count": 8,
+        "first": "Advertisement call (deep, low-frequency booming/\"whoop\" call) produced by males in breeding congregations; calling often peaks at night and after heavy rainfall."
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "Adult males commonly reach ~90-200 mm snout-vent length (SVL); females are much smaller (~70-110 mm SVL), a strong sexual size dimorphism reported by AmphibiaWeb and field guides."
+      },
+      "adaptations": {
+        "count": 5,
+        "first": "Estivation cocoon: layered, shed skin forms a protective sheath that reduces water loss while the frog is buried during dry seasons."
+      },
+      "behaviors": {
+        "count": 6,
+        "first": "Explosive breeding after major rains: males aggregate at temporary pools, call loudly, and compete for access to females in a short time window."
+      },
+      "myths_legends": {
+        "count": 4,
+        "first": "In Southern Africa, many Bantu-speaking groups say that when African bullfrogs suddenly appear and loudly call after the first storms, the rains have \"answered\" and life returns to dry land."
+      }
+    },
+    "article": {
+      "has_intro": true,
+      "headings": [
+        "4 Incredible African Bullfrog Facts!",
+        "Scientific Name",
+        "Evolution and History",
+        "Appearance and Behavior",
+        "Habitat",
+        "Diet",
+        "Predators and Threats",
+        "Reproduction, Babies, and Lifespan",
+        "Population"
+      ]
+    }
+  },
+  "african-golden-cat": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "African Golden Cat",
+      "scientific_name": "Caracal aurata",
+      "class": "Mammalia",
+      "taxon_level": "Species",
+      "summary": "The African golden cat is a medium-sized, forest-adapted wild cat of equatorial Africa, known for highly variable coat coloration (from golden-reddish to gray or melanistic) and a secretive lifestyle.",
+      "status": "Vulnerable",
+      "lifespan_wild": "10–12 years",
+      "lifespan_captivity": "12–15 years",
+      "social": "None (solitary)",
+      "group_size": 1,
+      "activity": "Nocturnal, Crepuscular, Diurnal",
+      "diet": "Carnivore",
+      "domestication": "Wild",
+      "danger_level": "Low",
+      "as_pet": "Not Suitable as Pet",
+      "cultural_significance": "The African golden cat (Caracal aurata) is less known than the leopard because it is rarely seen. Hunters call it a hard-to-find deep-forest cat. Its skins have small local use and are sometimes thought to be young leopard skins."
+    },
+    "lists": {
+      "locations": {
+        "count": 16,
+        "first": "Angola"
+      },
+      "also_known_as": {
+        "count": 1,
+        "first": "Golden cat"
+      },
+      "distinguishing_features": {
+        "count": 4,
+        "first": "Medium-sized felid with relatively short legs and a robust build"
+      },
+      "communication": {
+        "count": 8,
+        "first": "Growls: Agonistic warning at close range; typical felid threat vocalization described in general felid behavior syntheses used for this species where direct data are sparse: Sunquist & Sunquist 2002"
+      },
+      "did_you_know": {
+        "count": 6,
+        "first": "Size range: head-body length 61-101 cm; tail 16-46 cm; weight ~5.5-16 kg (adult)."
+      },
+      "adaptations": {
+        "count": 5,
+        "first": "Coat-color polymorphism (including melanism) provides camouflage across varied forest light conditions-from sun-dappled lowland rainforest to darker montane forest understory."
+      },
+      "behaviors": {
+        "count": 6,
+        "first": "Strongly solitary: adults are usually recorded alone; encounters are brief and likely tied to mating."
+      },
+      "myths_legends": {
+        "count": 2,
+        "first": "African Golden Cat (Caracal aurata) is rarely seen. Hunters' oral tales, not formal myths, say this quiet forest cat appears suddenly as a sign of good luck or a warning during hunts."
+      }
+    },
+    "article": {
+      "has_intro": true,
+      "headings": [
+        "Conservation Status",
+        "Subspecies",
+        "Evolution",
+        "Anatomy and Appearance",
+        "Distribution and Habitat",
+        "Behavior and Lifestyle",
+        "Reproduction and Life Cycle",
+        "Diet and Prey",
+        "Predators and Threats",
+        "Interesting Facts",
+        "Relationship and Humans",
+        "Zoos",
+        "Animals Similar to the African Golden Cat"
+      ]
+    }
+  },
+  "asian-carp": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Asian Carp",
+      "scientific_name": "Hypophthalmichthys",
+      "class": "Actinopterygii",
+      "taxon_level": "Family",
+      "summary": "A group of large, freshwater cyprinid fishes—most often the bighead and silver carps—known for rapid growth, high fecundity, and strong impacts on plankton-based food webs where introduced.",
+      "status": "Not Evaluated",
+      "lifespan_wild": "8–20 years",
+      "lifespan_captivity": "10–20 years",
+      "social": "School",
+      "group_size": 50,
+      "activity": "Diurnal, Crepuscular, Cathemeral",
+      "diet": "Filter Feeder",
+      "domestication": "Semi domesticated",
+      "danger_level": "Moderate",
+      "as_pet": "Not Suitable as Pet",
+      "cultural_significance": "Asian carp (bighead and silver carp, Hypophthalmichthys) are one of China’s \"Four Famous Domestic Fish\", long farmed as food across Asia. Outside their native range, especially North America, they reduce plankton, change food chains, hurt fishing and recreation. People notice them from videos of leaping silver carp."
+    },
+    "lists": {
+      "locations": {
+        "count": 5,
+        "first": "China"
+      },
+      "also_known_as": {
+        "count": 5,
+        "first": "Chinese carp"
+      },
+      "distinguishing_features": {
+        "count": 4,
+        "first": "Deep-bodied, laterally compressed carp with soft-rayed fins (no true spines)"
+      },
+      "communication": {
+        "count": 6,
+        "first": "No well-documented, species-specific vocal repertoire; may produce incidental low-frequency sounds during rapid movement, distress, or handling, but social coordination is not known to rely on vocal signals."
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "The genus name *Hypophthalmichthys* means \"under-eye fish,\" referring to the eyes set low on the head."
+      },
+      "adaptations": {
+        "count": 5,
+        "first": "Low-set eyes (\"under-eye\" look) associated with their head shape and feeding posture in open water."
+      },
+      "behaviors": {
+        "count": 6,
+        "first": "River-spawning strategy: adults migrate or move into flowing rivers during high-water periods; fertilized eggs drift downstream, and larvae later move into calmer backwaters/floodplain habitats. (Spawning timing and exact habitat use vary by species and river system.)"
+      },
+      "myths_legends": {
+        "count": 3,
+        "first": "In Chinese tradition, the \"carp leaping the Dragon Gate\" story tells of a carp that jumps a waterfall and becomes a dragon, meaning perseverance and success. It shaped views of carp, including Asian carp."
+      }
+    },
+    "article": {
+      "has_intro": false,
+      "headings": [
+        "3 Facts About Asian Carp",
+        "Classification and Scientific Name",
+        "Appearance",
+        "Distribution, Population, and Habitat",
+        "Predators and Prey",
+        "Reproduction and Lifespan",
+        "Asian Carp In Food",
+        "Asian Carp Population"
+      ]
+    }
+  },
+  "asian-longhorn-beetle": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Asian Longhorn Beetle",
+      "scientific_name": "Anoplophora glabripennis",
+      "class": "Insecta",
+      "taxon_level": "Species",
+      "summary": "A large cerambycid (longhorn) beetle native to East Asia; a globally significant invasive pest whose larvae tunnel in hardwood trees, often killing hosts and prompting eradication efforts.",
+      "status": "Not Evaluated",
+      "lifespan_wild": "12–24 years",
+      "lifespan_captivity": "9–24 years",
+      "social": "Aggregation",
+      "group_size": 1,
+      "activity": "Diurnal, Crepuscular",
+      "diet": "Herbivore",
+      "domestication": "Wild",
+      "danger_level": "Low",
+      "as_pet": "Not Suitable as Pet",
+      "cultural_significance": "The Asian longhorned beetle (Anoplophora glabripennis) is a modern symbol of invasive species risk. Found outside Asia, it led to big removal and quarantine programs. Public outreach taught people to spot round exit holes and frass on maples, elms, willows, poplars, and birches."
+    },
+    "lists": {
+      "locations": {
+        "count": 2,
+        "first": "China"
+      },
+      "also_known_as": {
+        "count": 4,
+        "first": "ALB"
+      },
+      "distinguishing_features": {
+        "count": 4,
+        "first": "Very long, black-and-white banded antennae (often longer than body, especially in males)"
+      },
+      "communication": {
+        "count": 5,
+        "first": "Stridulation: adults can produce audible squeaks/rasps by rubbing body parts (a common cerambycid defense/interaction mechanism), reported when disturbed/handled and potentially during close-range interactions."
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "Adults are typically 20-39 mm long, with males' antennae about 2-2.5× body length (females ~1.3×)."
+      },
+      "adaptations": {
+        "count": 5,
+        "first": "Extreme antennal \"sensory reach\": Long, many-segmented antennae packed with chemoreceptors help locate mates and suitable host trees; sexual dimorphism (much longer in males) supports mate-finding."
+      },
+      "behaviors": {
+        "count": 6,
+        "first": "Oviposition carving: A female chews a shallow, oval pit through the bark, then inserts a single egg; the pit often weeps sap and later collects frass-an early field sign."
+      },
+      "myths_legends": {
+        "count": 3,
+        "first": "Etymology as \"story\": The species name glabripennis means \"smooth-winged\" in Latin, reflecting the beetle's relatively smooth wing covers; this naming tradition helps turn a striking trait into a memorable identity."
+      }
+    },
+    "article": {
+      "has_intro": true,
+      "headings": [
+        "Asian Longhorn Beetle Species, Types, and Scientific Name",
+        "Appearance: How To Identify the Asian Longhorn Beetle",
+        "Habitat: Where to Find the Asian Longhorn Beetle",
+        "Diet: What Do Asian Longhorn Beetles Eat?",
+        "Life Cycle of the Asian Longhorn Beetle",
+        "Asian Longhorn Predators",
+        "Prevention: How to Get Rid of the Asian Longhorn Beetle",
+        "Up Next"
+      ]
+    }
+  },
+  "banana-cinnamon-ball-python": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Banana Cinnamon Ball Python",
+      "scientific_name": "Python regius",
+      "class": "Reptilia",
+      "taxon_level": "Species",
+      "summary": "A ‘Banana Cinnamon Ball Python’ is a domestically bred Ball Python (Python regius) expressing a combination of two color/pattern mutations (“Banana” and “Cinnamon”). Taxonomically it remains the same species as all ball pythons.",
+      "status": "Not Evaluated",
+      "lifespan_wild": "5–20 years",
+      "lifespan_captivity": "15–40 years",
+      "social": "No formal group (solitary)",
+      "group_size": 1,
+      "activity": "Nocturnal, Crepuscular, Cathemeral",
+      "diet": "Carnivore",
+      "domestication": "Domesticated",
+      "danger_level": "Low",
+      "as_pet": "Suitable as Pet",
+      "cultural_significance": "Python regius, the ball python, comes from West and Central Africa and is not venomous and secretive. As pets worldwide, morphs like Banana Cinnamon are valued in captive breeding for predictable genes, bright colors, and replacing wild-caught animals."
+    },
+    "lists": {
+      "locations": {
+        "count": 1,
+        "first": "Worldwide"
+      },
+      "also_known_as": {
+        "count": 3,
+        "first": "Ball Python"
+      },
+      "distinguishing_features": {
+        "count": 4,
+        "first": "Same body plan as Ball Python (Python regius): a relatively stout, medium-sized python with heat-sensing labial pits and a generally docile disposition."
+      },
+      "communication": {
+        "count": 8,
+        "first": "hissing: Primary defensive warning"
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "It's the same species as any Ball Python (Python regius); \"Banana Cinnamon\" describes a morph combo, not a new species."
+      },
+      "adaptations": {
+        "count": 5,
+        "first": "Infrared-sensitive heat pits along the lips help detect warm-blooded prey in low light (shared ball python adaptation; the morph doesn't change this)."
+      },
+      "behaviors": {
+        "count": 6,
+        "first": "Balling up defensively: a classic species behavior that's often seen during handling or sudden changes in environment."
+      },
+      "myths_legends": {
+        "count": 3,
+        "first": "In parts of West Africa, pythons (often including royal/ball pythons among local \"python\" traditions) have been regarded with reverence and protected in certain communities, tied to ideas of spiritual power and good fortune."
+      }
+    },
+    "article": {
+      "has_intro": true,
+      "headings": [
+        "Banana Cinnamon Ball Python Facts",
+        "Banana Cinnamon Ball Python Scientific Name and Classification",
+        "Banana Cinnamon Ball Python Appearance and Behavior",
+        "Banana Cinnamon Ball Python Habitat and Diet",
+        "Banana Cinnamon Ball Python Predators, Threats, Conservation, and Population",
+        "Banana Cinnamon Ball Python Reproduction, Babies, and Lifespan"
+      ]
+    }
+  },
+  "beagle": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Beagle",
+      "scientific_name": "Canis lupus familiaris",
+      "class": "Mammalia",
+      "taxon_level": "Species",
+      "summary": "The Beagle is a small-to-medium domestic dog breed developed as a scent hound, widely known for tracking by smell and for an even-tempered, social disposition.",
+      "status": "Not Evaluated",
+      "lifespan_wild": "2–10 years",
+      "lifespan_captivity": "10–15 years",
+      "social": "Pack",
+      "group_size": 6,
+      "activity": "Cathemeral, Diurnal, Crepuscular",
+      "diet": "Omnivore",
+      "domestication": "Domesticated",
+      "danger_level": "Low",
+      "as_pet": "Suitable as Pet",
+      "cultural_significance": "Beagle (Canis lupus familiaris) began in Britain as pack hounds for hunting hares. Now known worldwide as friendly family dogs, they still work in scent detection (like farm and biosecurity checks). Snoopy made them iconic, curious, loyal, nose-led."
+    },
+    "lists": {
+      "locations": {
+        "count": 1,
+        "first": "United Kingdom"
+      },
+      "also_known_as": {
+        "count": 0,
+        "first": null
+      },
+      "distinguishing_features": {
+        "count": 4,
+        "first": "Compact scent hound build; strong olfactory ability"
+      },
+      "communication": {
+        "count": 9,
+        "first": "Baying: Distinctive hound call used during scenting/tracking"
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "Beagles are scent hounds-bred to follow ground scent for hours, not to run by sight like many sighthounds."
+      },
+      "adaptations": {
+        "count": 6,
+        "first": "Highly developed olfaction compared with many breeds: selectively bred for scent discrimination and trail endurance (a specialization within Canis lupus familiaris)."
+      },
+      "behaviors": {
+        "count": 6,
+        "first": "Nose-to-the-ground \"tracking mode\": they may ignore distractions once a scent trail is found."
+      },
+      "myths_legends": {
+        "count": 5,
+        "first": "At the Tudor court, Queen Elizabeth I was said to keep tiny 'pocket Beagles' (Canis lupus familiaris) that rode in saddlebags or on a glove and whose lively voices amused guests, mixing history and legend."
+      }
+    },
+    "article": {
+      "has_intro": false,
+      "headings": [
+        "Evolution",
+        "The Different Types of Beagles and Beagle Mixes",
+        "3 Pros and Cons of Owning a Beagle",
+        "Size and Weight",
+        "Common Health Issues",
+        "Temperament",
+        "How to Take Care of a Beagle",
+        "Beagle and Children",
+        "Dogs Similar to Beagles",
+        "Famous Beagles"
+      ]
+    }
+  },
+  "bed-bugs": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Bed Bugs",
+      "scientific_name": "Cimex lectularius",
+      "class": "Insecta",
+      "taxon_level": "Species",
+      "summary": "The common bed bug is a small, wingless, blood-feeding true bug that primarily feeds on humans and is a well-known household pest. It hides in cracks/crevices near sleeping areas and emerges mainly at night to feed.",
+      "status": "Not Evaluated",
+      "lifespan_wild": "2–12 years",
+      "lifespan_captivity": "3–18 years",
+      "social": "Harborage (aggregation)",
+      "group_size": 100,
+      "activity": "Nocturnal",
+      "diet": "Sanguivore",
+      "domestication": "Wild",
+      "danger_level": "Moderate",
+      "as_pet": "Not Suitable as Pet",
+      "cultural_significance": "Cimex lectularius (common bed bug) is a known indoor pest in temperate areas. It shaped bed design, laundry, and fumigation. Its late 20th–21st century return—from travel, used furniture, and insecticide resistance—made it a public health problem, led to hotel and housing inspections, and remains in the \"Sleep tight\" rhyme."
+    },
+    "lists": {
+      "locations": {
+        "count": 1,
+        "first": "Worldwide"
+      },
+      "also_known_as": {
+        "count": 7,
+        "first": "bedbug"
+      },
+      "distinguishing_features": {
+        "count": 5,
+        "first": "Small, dorsoventrally flattened body (adult typically ~4–7 mm), oval shape"
+      },
+      "communication": {
+        "count": 4,
+        "first": "aggregation pheromones: Chemical cues from feces/exuviae and associated volatiles) promote clustering and harborage fidelity; documented attraction to aggregation-associated chemicals (Siljander et al. 2008"
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "Adults are ~4.5-7.0 mm long and dorsoventrally flattened-about the size of an apple seed."
+      },
+      "adaptations": {
+        "count": 7,
+        "first": "Piercing-sucking mouthparts (Hemiptera) form a beak-like rostrum that injects saliva and draws blood efficiently."
+      },
+      "behaviors": {
+        "count": 7,
+        "first": "Nocturnal host-seeking: emerges mainly pre-dawn, guided by CO₂, body heat, and human odors, then returns to shelter after feeding."
+      },
+      "myths_legends": {
+        "count": 5,
+        "first": "\"Sleep tight, don't let the bed bugs bite\": a widely repeated Anglo-American bedtime rhyme/wish that treats bed bugs as the archetypal night-biting nuisance to be warded off before sleep."
+      }
+    },
+    "article": {
+      "has_intro": true,
+      "headings": [
+        "Species, Types, and Scientific Name",
+        "Appearance",
+        "History and Evolution",
+        "Habitat",
+        "Diet",
+        "Prevention"
+      ]
+    }
+  },
+  "birds": {
+    "is_animal_page": false
+  },
+  "black-tarantula": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Black Tarantula",
+      "scientific_name": "Grammostola pulchra",
+      "class": "Arachnida",
+      "taxon_level": "Species",
+      "summary": "A large New World tarantula renowned for its uniform, velvety black coloration and generally calm disposition; widely kept as an invertebrate pet.",
+      "status": "Not Evaluated",
+      "lifespan_wild": "3–15 years",
+      "lifespan_captivity": "6–25 years",
+      "social": "No established group name (solitary species)",
+      "group_size": 1,
+      "activity": "Nocturnal, Crepuscular",
+      "diet": "Insectivore",
+      "domestication": "Wild",
+      "danger_level": "Low",
+      "as_pet": "Suitable as Pet",
+      "cultural_significance": "In Brazil, big tarantulas called caranguejeiras appear in rural fear stories and home warnings. Grammostola pulchra, a jet-black, calm pet tarantula, helped hobbyists see New World species as less defensive and less dangerous than many Old World tarantulas."
+    },
+    "lists": {
+      "locations": {
+        "count": 1,
+        "first": "Brazil"
+      },
+      "also_known_as": {
+        "count": 3,
+        "first": "Brazilian black"
+      },
+      "distinguishing_features": {
+        "count": 4,
+        "first": "Uniform deep black, velvety setae (hair) over body and legs"
+      },
+      "communication": {
+        "count": 6,
+        "first": "None: No true vocal communication documented for this species; tarantulas primarily communicate via chemical and vibratory channels"
+      },
+      "did_you_know": {
+        "count": 6,
+        "first": "Scientific name meaning: *pulchra* is Latin for \"beautiful,\" reflecting its prized, glossy-black look."
+      },
+      "adaptations": {
+        "count": 5,
+        "first": "Urticating setae (defensive hairs) on the abdomen: an anti-predator adaptation widespread in New World tarantulas; hair types and mechanisms in Theraphosidae were formalized in classic work on urticating setae (e.g., Cooke, Roth & Miller, 1972)."
+      },
+      "behaviors": {
+        "count": 5,
+        "first": "Terrestrial ambush hunting: waits at a burrow or hide entrance and strikes prey that wanders close (sit-and-wait predation typical of many Theraphosidae)."
+      },
+      "myths_legends": {
+        "count": 4,
+        "first": "Brazilian folk caution around \"caranguejeiras\": in many regions, people tell stories portraying big tarantulas as dangerously venomous house-invaders-accounts passed through families as warnings to children and farm workers."
+      }
+    },
+    "article": {
+      "has_intro": true,
+      "headings": [
+        "Amazing Black Tarantula Facts",
+        "Black Tarantula Scientific Name",
+        "Black Tarantula Appearance",
+        "Black Tarantula Behavior",
+        "Black Tarantula Habitat",
+        "Black Tarantula Predators and Threats",
+        "Reproduction, Babies, and Lifespan",
+        "Population"
+      ]
+    }
+  },
+  "blacktip-shark": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Blacktip Shark",
+      "scientific_name": "Carcharhinus limbatus",
+      "class": "Chondrichthyes",
+      "taxon_level": "Species",
+      "summary": "A medium-sized requiem shark recognized by dark (black) tips on several fins and a streamlined coastal-pelagic lifestyle; common in warm-temperate to tropical seas.",
+      "status": "Near Threatened",
+      "lifespan_wild": "8–16.4 years",
+      "lifespan_captivity": "6–18 years",
+      "social": "School",
+      "group_size": 20,
+      "activity": "Cathemeral, Crepuscular",
+      "diet": "Carnivore",
+      "domestication": "Wild",
+      "danger_level": "Moderate",
+      "as_pet": "Not Suitable as Pet",
+      "cultural_significance": "Blacktip shark (Carcharhinus limbatus) gather near beaches and drive sport fisheries (blacktip runs), boat viewing ecotourism, and seafood markets. Nearshore nurseries make them at risk from habitat loss and fishing. They look like spinner and blacktip reef sharks, so help teach identification and beach safety."
+    },
+    "lists": {
+      "locations": {
+        "count": 77,
+        "first": "North Carolina"
+      },
+      "also_known_as": {
+        "count": 5,
+        "first": "Black-tip shark"
+      },
+      "distinguishing_features": {
+        "count": 4,
+        "first": "Black or dark tips on pectoral fins and usually other fins (often with a pale band beneath)"
+      },
+      "communication": {
+        "count": 6,
+        "first": "No vocalizations are documented for Carcharhinus limbatus; sharks lack known sound-producing organs used for social signaling in the manner of many teleosts: General elasmobranch biology: Compagno, 2001; Collin, 2012"
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "The \"blacktips\" are most obvious on the first dorsal fin and lower caudal lobe, but can also mark the pectoral, pelvic, and second dorsal fins-helpful for quick ID at the surface."
+      },
+      "adaptations": {
+        "count": 6,
+        "first": "Black fin tips as a high-contrast visual signal: may aid species recognition and schooling coordination in turbid, sun-glared nearshore waters (functional hypotheses discussed in elasmobranch ecology literature)."
+      },
+      "behaviors": {
+        "count": 7,
+        "first": "Nearshore nursery use and site fidelity: females commonly pup in shallow, warm coastal habitats (bays/estuaries), and juveniles remain in protected nurseries to reduce predation risk."
+      },
+      "myths_legends": {
+        "count": 5,
+        "first": "In Native Hawaiian tradition, sharks are sometimes revered as family guardian spirits that may protect or guide relatives at sea; these beliefs are not tied to a single shark species."
+      }
+    },
+    "article": {
+      "has_intro": false,
+      "headings": [
+        "5 Quick Facts",
+        "Classification and Scientific Name",
+        "Appearance",
+        "Distribution, Population, and Habitat",
+        "Predators and Prey",
+        "Reproduction and Lifespan",
+        "Blacktip Sharks in Food and Cooking",
+        "Population"
+      ]
+    }
+  },
+  "blue-iguana": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Blue Iguana",
+      "scientific_name": "Cyclura lewisi",
+      "class": "Reptilia",
+      "taxon_level": "Species",
+      "summary": "A large, primarily terrestrial Caribbean rock iguana endemic to Grand Cayman, known for its distinctive bluish-gray coloration (especially in adult males) and robust build.",
+      "status": "Endangered",
+      "lifespan_wild": "15–40 years",
+      "lifespan_captivity": "20–60 years",
+      "social": "Solitary",
+      "group_size": 1,
+      "activity": "Diurnal, Matutinal, Vespertine",
+      "diet": "Omnivore",
+      "domestication": "Wild",
+      "danger_level": "Moderate",
+      "as_pet": "Not Suitable as Pet",
+      "cultural_significance": "The Blue Iguana (Cyclura lewisi) is a native flagship and symbol of Grand Cayman's natural heritage. Its recovery is tied to the National Trust and Blue Iguana Programme and island conservation. It is used in nature education, ecotourism, and local pride to protect endemics from predators and habitat loss."
+    },
+    "lists": {
+      "locations": {
+        "count": 1,
+        "first": "Cayman Islands"
+      },
+      "also_known_as": {
+        "count": 4,
+        "first": "Grand Cayman iguana"
+      },
+      "distinguishing_features": {
+        "count": 4,
+        "first": "Stout-bodied rock iguana with a prominent dorsal crest/spines"
+      },
+      "communication": {
+        "count": 5,
+        "first": "Hissing/exhalation and occasional forceful breathing sounds during threat/handling; otherwise generally low-vocal: Reported in Cyclura husbandry/field notes; consistent with iguanid behavior descriptions in herpetological literature"
+      },
+      "did_you_know": {
+        "count": 6,
+        "first": "Size: adults reach about 1.5 m total length, with heavy-bodied Cyclura proportions (IUCN Red List species account)."
+      },
+      "adaptations": {
+        "count": 5,
+        "first": "Robust 'rock iguana' build: deep skull and strong jaw musculature for cropping tough, fibrous island vegetation; a hallmark of Cyclura."
+      },
+      "behaviors": {
+        "count": 5,
+        "first": "Diurnal thermoregulation: emerges to bask for rapid morning warm-up, then alternates sun/shade to keep body temperature in an active range typical of large iguanids."
+      },
+      "myths_legends": {
+        "count": 3,
+        "first": "Name origin: the English word \"iguana\" entered English via Spanish and ultimately derives from a Taino (Arawakan) word used in the Caribbean."
+      }
+    },
+    "article": {
+      "has_intro": true,
+      "headings": [
+        "5 Incredible Blue Iguana Facts!",
+        "Scientific Name",
+        "Appearance",
+        "Behavior",
+        "Habitat",
+        "Diet",
+        "Predators and Threats",
+        "Reproduction and Life Cycle",
+        "Population",
+        "Evolution and Origin"
+      ]
+    }
+  },
+  "blue-whale": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Blue Whale",
+      "scientific_name": "Balaenoptera musculus",
+      "class": "Mammalia",
+      "taxon_level": "Species",
+      "summary": "The blue whale is the largest animal known to have ever lived. It is a baleen whale (rorqual) that filter-feeds primarily on krill and undertakes long seasonal migrations between feeding and breeding areas.",
+      "status": "Endangered",
+      "lifespan_wild": "70–110 years",
+      "lifespan_captivity": "0 years",
+      "social": "Pod",
+      "group_size": 2,
+      "activity": "Cathemeral, Crepuscular",
+      "diet": "Filter Feeder",
+      "domestication": "Wild",
+      "danger_level": "Low",
+      "as_pet": "Not Suitable as Pet",
+      "cultural_significance": "Blue Whale (Balaenoptera musculus) is a global symbol of ocean life and the whaling era. Endangered on the IUCN Red List, it declined from whaling but shows some recovery after the 1966 IWC ban. It drives ocean education, whale-watching, and policies to reduce ship strikes, fishing-gear entanglement, and underwater noise."
+    },
+    "lists": {
+      "locations": {
+        "count": 13,
+        "first": "Atlantic Ocean"
+      },
+      "also_known_as": {
+        "count": 3,
+        "first": "Sibbald's rorqual"
+      },
+      "distinguishing_features": {
+        "count": 5,
+        "first": "Enormous size; long, streamlined rorqual body"
+      },
+      "communication": {
+        "count": 6,
+        "first": "powerful low-frequency: Often infrasonic) calls used for long-range communication; dominant energy commonly reported in the ~10-40 Hz band (e.g., McDonald et al. 2001; Stafford et al. 2001"
+      },
+      "did_you_know": {
+        "count": 6,
+        "first": "Record size: up to 29.9 m long (females), with typical adults ~24-27 m (NOAA Fisheries; Jefferson et al.)."
+      },
+      "adaptations": {
+        "count": 7,
+        "first": "Baleen filtration system: hundreds of baleen plates per side (commonly ~270-395) plus a bristled tongue to trap krill while expelling seawater (anatomical studies; field guides)."
+      },
+      "behaviors": {
+        "count": 7,
+        "first": "Lunge-feeding (rorqual gulping): accelerates into dense krill patches, opens the mouth, and engulfs a huge volume of water and prey; baleen then filters krill as water exits."
+      },
+      "myths_legends": {
+        "count": 6,
+        "first": "A medieval Scandinavian legend in the 13th-century King's Mirror tells of a giant sea creature mistaken for an island; later writers say such \"island whale\" tales may come from sightings of very large baleen whales."
+      }
+    },
+    "article": {
+      "has_intro": false,
+      "headings": [
+        "Classification",
+        "Anatomy and Appearance",
+        "Evolution and History",
+        "Distribution and Habitat",
+        "Behavior and Lifestyle",
+        "Reproduction and Life Cycles",
+        "Diet and Prey",
+        "Predators and Threats",
+        "Conservation"
+      ]
+    }
+  },
+  "bobcat": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Bobcat",
+      "scientific_name": "Lynx rufus",
+      "class": "Mammalia",
+      "taxon_level": "Species",
+      "summary": "The bobcat (Lynx rufus) is a medium-sized wild cat native to North America, adaptable to a wide range of habitats and known for its short “bobbed” tail, tufted ears, and spotted coat. It is an opportunistic predator and important mesocarnivore in many ecosystems.",
+      "status": "Least Concern",
+      "lifespan_wild": "1–16 years",
+      "lifespan_captivity": "10–32.3 years",
+      "social": "None (solitary)",
+      "group_size": 1,
+      "activity": "Crepuscular, Nocturnal, Cathemeral",
+      "diet": "Carnivore",
+      "domestication": "Wild",
+      "danger_level": "Moderate",
+      "as_pet": "Not Suitable as Pet",
+      "cultural_significance": "Bobcat (Lynx rufus) is a North American wild cat and a mesocarnivore (medium-sized meat eater) that helps control rabbits and rodents. It shows up in place names, mascots, and education, and can persist in broken landscapes with cover and prey."
+    },
+    "lists": {
+      "locations": {
+        "count": 57,
+        "first": "British Columbia"
+      },
+      "also_known_as": {
+        "count": 6,
+        "first": "red lynx"
+      },
+      "distinguishing_features": {
+        "count": 5,
+        "first": "Short, black-topped “bobbed” tail with pale underside"
+      },
+      "communication": {
+        "count": 7,
+        "first": "Yowls/caterwauls and loud screams during estrus/mating periods: Common in Lynx rufus breeding behavior descriptions; Larivière & Walton, 1997"
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "Size: head-body length 65-105 cm; tail 9-20 cm; mass typically ~4-9 kg (female) and ~7-14 kg (male) (Lariviere & Walton 1997, Mammalian Species)."
+      },
+      "adaptations": {
+        "count": 6,
+        "first": "Bobbed tail with contrasting pattern: aids species ID and may act as a visual signal at close range in dense cover (distinct from the Canada lynx tail tip pattern)."
+      },
+      "behaviors": {
+        "count": 8,
+        "first": "Solitary spacing system: adults typically avoid each other outside breeding, using scent marks and scrapes to signal territory boundaries."
+      },
+      "myths_legends": {
+        "count": 4,
+        "first": "A Native American warning story about the Bobcat (Lynx rufus). After an accident—like a trap, a closing door, or a trick—the bobcat's tail is shortened, explaining its bobbed tail."
+      }
+    },
+    "article": {
+      "has_intro": false,
+      "headings": [
+        "Classification and Scientific Name",
+        "Anatomy and Appearance",
+        "Distribution and Habitat",
+        "Behavior and Lifestyle",
+        "Reproduction and Life Cycles",
+        "Diet and Prey",
+        "Predators and Threats",
+        "Interesting Facts and Features",
+        "Relationship with Humans",
+        "Conservation Status and Life Today"
+      ]
+    }
+  },
+  "bullfrog": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Bullfrog",
+      "scientific_name": "Lithobates catesbeianus",
+      "class": "Amphibia",
+      "taxon_level": "Species",
+      "summary": "The American bullfrog is a large, mostly aquatic true frog known for a deep, booming call and strong hind legs. It is native to eastern North America and has been widely introduced elsewhere.",
+      "status": "Least Concern",
+      "lifespan_wild": "8–10 years",
+      "lifespan_captivity": "10–16 years",
+      "social": "Breeding chorus",
+      "group_size": 8,
+      "activity": "Crepuscular, Nocturnal",
+      "diet": "Omnivore",
+      "domestication": "Wild",
+      "danger_level": "Low",
+      "as_pet": "Not Suitable as Pet",
+      "cultural_significance": "The American Bullfrog (Lithobates catesbeianus) is a familiar summer wetland sound in North America. Eaten as frog legs and used in research, it is also a well-known invasive species that eats native animals, competes for shoreline habitat, and can carry amphibian diseases."
+    },
+    "lists": {
+      "locations": {
+        "count": 39,
+        "first": "Ontario"
+      },
+      "also_known_as": {
+        "count": 2,
+        "first": "Bullfrog"
+      },
+      "distinguishing_features": {
+        "count": 5,
+        "first": "Very large size for a frog; robust body and powerful hind legs"
+      },
+      "communication": {
+        "count": 8,
+        "first": "Advertisement call: Male): the characteristic deep \"jug-o-rum\" call produced from shoreline stations; used for mate attraction and spacing/territorial advertisement (well documented across anuran bioacoustics references and bullfrog behavioral studies"
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "Adults can reach ~203 mm snout-vent length (about 20 cm), making it one of North America's largest frogs."
+      },
+      "adaptations": {
+        "count": 6,
+        "first": "Powerful hind limbs and extensive webbing enable strong propulsion for swimming and long escape jumps from shorelines."
+      },
+      "behaviors": {
+        "count": 6,
+        "first": "Shoreline sit-and-wait hunting: adults float or crouch at the water's edge and strike rapidly at moving prey."
+      },
+      "myths_legends": {
+        "count": 4,
+        "first": "In parts of the rural eastern U.S., the deep \"jug-o-rum\" call is traditional \"pond-lore\" for summer: hearing bullfrogs at night is taken as a sign of settled warm weather and thriving water in the landscape."
+      }
+    },
+    "article": {
+      "has_intro": false,
+      "headings": [
+        "5 Incredible Bullfrog Facts",
+        "Evolution",
+        "Scientific Name",
+        "Appearance",
+        "Behavior",
+        "Habitat",
+        "Diet",
+        "Predators & Threats",
+        "Reproduction, Babies, and Lifespan",
+        "Population",
+        "In the Zoo"
+      ]
+    }
+  },
+  "carp": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Carp",
+      "scientific_name": "Cyprinidae",
+      "class": "Actinopterygii",
+      "taxon_level": "Family",
+      "summary": "Carps (family Cyprinidae) are ray-finned freshwater fishes that include the true carps, minnows, barbs, danios, and many related forms. They are typically omnivorous or herbivorous, often schooling, and many are important in fisheries and aquaculture; some introduced species have become invasive.",
+      "status": "Vulnerable",
+      "lifespan_wild": "1–40 years",
+      "lifespan_captivity": "1–50 years",
+      "social": "School/shoal",
+      "group_size": 50,
+      "activity": "Diurnal, Crepuscular, Cathemeral",
+      "diet": "Omnivore",
+      "domestication": "Semi domesticated",
+      "danger_level": "Low",
+      "as_pet": "Suitable as Pet",
+      "cultural_significance": "Cyprinids (Cyprinidae) are very important to freshwater food and culture across Eurasia. Common and major carps support fish farming; ornamental carp and goldfish shaped pond traditions. Some introduced cyprinids became invasive, needing control in lakes and rivers."
+    },
+    "lists": {
+      "locations": {
+        "count": 48,
+        "first": "Afghanistan"
+      },
+      "also_known_as": {
+        "count": 0,
+        "first": null
+      },
+      "distinguishing_features": {
+        "count": 5,
+        "first": "Single dorsal fin (typical of cyprinids) and generally soft-rayed fins"
+      },
+      "communication": {
+        "count": 5,
+        "first": "Low-amplitude clicks, grunts, or stridulation-like sounds reported in some cyprinids (typically subtle and context-dependent, e.g., handling stress or close interactions); many species rely little on sound compared to other channels."
+      },
+      "did_you_know": {
+        "count": 6,
+        "first": "Cyprinids lack oral teeth-food is processed with specialized pharyngeal teeth in the throat."
+      },
+      "adaptations": {
+        "count": 6,
+        "first": "Pharyngeal tooth \"mill\" (often in one to three rows) allows crushing, grinding, and scraping without jaw teeth-key to exploiting diverse diets."
+      },
+      "behaviors": {
+        "count": 6,
+        "first": "Schooling is extremely common (especially in minnows/danios), improving predator detection; however, many larger barbs and carps may form looser shoals or become more solitary with age."
+      },
+      "myths_legends": {
+        "count": 6,
+        "first": "China's \"Carp Leaping the Dragon Gate\" legend tells of a carp that surmounts a raging waterfall and transforms into a dragon-an enduring symbol of perseverance and success in study and life."
+      }
+    },
+    "article": {
+      "has_intro": false,
+      "headings": [
+        "4 Incredible Carp Facts",
+        "Evolution and Origin",
+        "Classification and Scientific Name",
+        "Species",
+        "Appearance",
+        "Distribution, Population, and Habitat",
+        "Predators and Prey",
+        "Reproduction and Lifespan",
+        "Fishing and Cooking"
+      ]
+    }
+  },
+  "cone-snail": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Cone Snail",
+      "scientific_name": "Conidae",
+      "class": "Gastropoda",
+      "taxon_level": "Family",
+      "summary": "Cone snails are predatory marine gastropods (sea snails) in the family Conidae, best known for their harpoon-like radular tooth and complex venoms (conotoxins) used to subdue worms, other mollusks, or fish. Many species are attractive and collected for their patterned shells; a subset are capable of dangerous stings to humans.",
+      "status": "Not Evaluated",
+      "lifespan_wild": "2–25 years",
+      "lifespan_captivity": "1–60 years",
+      "social": "Aggregation",
+      "group_size": 1,
+      "activity": "Nocturnal, Crepuscular, Cathemeral",
+      "diet": "Carnivore",
+      "domestication": "Wild",
+      "danger_level": "High",
+      "as_pet": "Not Suitable as Pet",
+      "cultural_significance": "Cone snails (Conidae) have long been prized for patterned shells, collected, traded, and used in coastal crafts and jewelry. Their conotoxins helped neurobiology and drug discovery. Many tourist signs say: \"look, don’t handle\" reefs."
+    },
+    "lists": {
+      "locations": {
+        "count": 49,
+        "first": "Angola"
+      },
+      "also_known_as": {
+        "count": 4,
+        "first": "cone shells"
+      },
+      "distinguishing_features": {
+        "count": 4,
+        "first": "Conical, often highly patterned shell with a narrow aperture"
+      },
+      "communication": {
+        "count": 5,
+        "first": "None known: No acoustic/vocal signaling documented for the family"
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "Family diversity: Conidae includes hundreds of species, from tiny sand-dwellers to large reef hunters."
+      },
+      "adaptations": {
+        "count": 7,
+        "first": "Venom apparatus: a muscular venom bulb pumps venom through a duct to the radular tooth; the tooth is disposable and replaced from a \"tooth sac.\""
+      },
+      "behaviors": {
+        "count": 6,
+        "first": "Ambush predation is common: many species hide under sand or rubble with only a siphon exposed, striking when prey passes."
+      },
+      "myths_legends": {
+        "count": 4,
+        "first": "The 'cigarette snail' tale among people in parts of the Pacific and divers says someone stung by a cone snail (Conidae) has only time to smoke a cigarette—a modern sea legend from fear of their venom."
+      }
+    },
+    "article": {
+      "has_intro": true,
+      "headings": [
+        "Facts",
+        "Summary",
+        "Scientific Name",
+        "Evolution and History",
+        "Appearance",
+        "Behavior",
+        "Economic Importance",
+        "Diet",
+        "Habitat and Population",
+        "Reproduction and Lifespan",
+        "Predators and Threats"
+      ]
+    }
+  },
+  "corn-snake": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Corn Snake",
+      "scientific_name": "Pantherophis guttatus",
+      "class": "Reptilia",
+      "taxon_level": "Species",
+      "summary": "A nonvenomous, primarily nocturnal/crepuscular constrictor native to the southeastern and central-eastern United States, famous in herpetoculture for its docile temperament and many color/pattern morphs.",
+      "status": "Least Concern",
+      "lifespan_wild": "6–15 years",
+      "lifespan_captivity": "10–32.3 years",
+      "social": "Aggregation",
+      "group_size": 1,
+      "activity": "Crepuscular, Nocturnal, Cathemeral",
+      "diet": "Carnivore",
+      "domestication": "Semi domesticated",
+      "danger_level": "Low",
+      "as_pet": "Suitable as Pet",
+      "cultural_significance": "Corn snake (Pantherophis guttatus) is called a barn/crib snake in the southeastern and central-eastern U.S. because it eats rodents near grain. Popular pet: small, calm, many color morphs; belly looks like Indian corn."
+    },
+    "lists": {
+      "locations": {
+        "count": 13,
+        "first": "New Jersey"
+      },
+      "also_known_as": {
+        "count": 3,
+        "first": "Red rat snake"
+      },
+      "distinguishing_features": {
+        "count": 4,
+        "first": "Orange to reddish dorsal coloration with black-edged blotches; ventral ‘checkerboard’ black-and-white belly pattern is classic"
+      },
+      "communication": {
+        "count": 5,
+        "first": "Hissing: Non-vocal sound from exhalation; no true vocal calls"
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "Adults typically measure 61-152 cm total length; large individuals can reach ~182 cm."
+      },
+      "adaptations": {
+        "count": 5,
+        "first": "Ventral \"checkerboard\" patterning: high-contrast belly markings can help break up the body outline when moving through leaf litter and shadows."
+      },
+      "behaviors": {
+        "count": 6,
+        "first": "Crepuscular/nocturnal activity: often active at dusk, night, and early morning, especially in warm months; shelters by day under logs, boards, and debris."
+      },
+      "myths_legends": {
+        "count": 4,
+        "first": "Southern U.S. farm stories call the corn snake (Pantherophis guttatus) a welcome barn guardian, an old belief that this harmless snake near a barn keeps mice away from stored grain and brings luck."
+      }
+    },
+    "article": {
+      "has_intro": true,
+      "headings": [
+        "Amazing Facts About Corn Snakes",
+        "Evolution",
+        "Species",
+        "Where to Find Corn Snakes",
+        "Scientific Name",
+        "Population and Conservation",
+        "Appearance & Description",
+        "How Dangerous Are Corn Snakes?",
+        "Behavior and Humans",
+        "Color Morphs",
+        "Similar Animals"
+      ]
+    }
+  },
+  "crow": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Crow",
+      "scientific_name": "Corvus",
+      "class": "Aves",
+      "taxon_level": "Genus",
+      "summary": "Crows (genus Corvus) are highly intelligent passerine birds known for problem-solving, social learning, tool use in some species, and opportunistic omnivorous diets. The genus also includes ravens and some species commonly called rooks or jackdaws depending on region and tradition.",
+      "status": "Not Evaluated",
+      "lifespan_wild": "3–25 years",
+      "lifespan_captivity": "5–45 years",
+      "social": "Flock",
+      "group_size": 20,
+      "activity": "Diurnal, Crepuscular",
+      "diet": "Omnivore",
+      "domestication": "Wild",
+      "danger_level": "Low",
+      "as_pet": "Not Suitable as Pet",
+      "cultural_significance": "Across Eurasia, Africa, Oceania, Americas, Corvus (crows and ravens) are cultural symbols: smart and adaptable, linked to battlefields and dead animals yet seen as creators and guides. In Corvidae, close to jays and magpies, they are cast as 'thinking scavenger' or 'clever trickster', matching their taking chances and social smarts."
+    },
+    "lists": {
+      "locations": {
+        "count": 60,
+        "first": "Austria"
+      },
+      "also_known_as": {
+        "count": 5,
+        "first": "Raven"
+      },
+      "distinguishing_features": {
+        "count": 5,
+        "first": "All-black or mostly black plumage in many species (some gray/black forms exist, e.g., Hooded Crow)"
+      },
+      "communication": {
+        "count": 11,
+        "first": "caws/croaks and harsh calls: Highly variable across species"
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "Genus-wide size spans from jackdaw-sized birds (~34 cm long) to the Common Raven (~67 cm) with wingspans up to ~150 cm."
+      },
+      "adaptations": {
+        "count": 6,
+        "first": "Relatively large brains for a songbird lineage, supporting flexible cognition, memory, and innovation (strength varies among species)."
+      },
+      "behaviors": {
+        "count": 7,
+        "first": "Problem-solving and social learning: individuals learn by watching others, and innovations can spread through local populations (extent varies by species and setting)."
+      },
+      "myths_legends": {
+        "count": 8,
+        "first": "Pacific Northwest Coast (e.g., Haida, Tlingit, Tsimshian): Raven is a powerful creator-trickster who shapes the world and is famously involved in stories of bringing light (sun, moon, stars) to people."
+      }
+    },
+    "article": {
+      "has_intro": false,
+      "headings": [
+        "Where to Find Crows",
+        "Scientific Name",
+        "Evolution",
+        "Types of Crows",
+        "Size, Appearance & Behavior",
+        "Diet",
+        "Predators, Threats, and Conservation Status",
+        "Reproduction, Babies, and Lifespan",
+        "Population"
+      ]
+    }
+  },
+  "eagle": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Eagle",
+      "scientific_name": "Accipitridae",
+      "class": "Aves",
+      "taxon_level": "Family",
+      "summary": "Eagles (in the broad common-name sense) are large, diurnal birds of prey characterized by powerful hooked bills, strong talons, keen vision, and soaring flight. Most “true eagles” and many widely known eagles (e.g., Aquila and Haliaeetus) belong to the raptor family Accipitridae within the order Accipitriformes.",
+      "status": "Not Evaluated",
+      "lifespan_wild": "10–40 years",
+      "lifespan_captivity": "15–55 years",
+      "social": "Pair (breeding); congregation/roost (non-breeding aggregations)",
+      "group_size": 2,
+      "activity": "Diurnal, Crepuscular, Matutinal, Vespertine",
+      "diet": "Carnivore",
+      "domestication": "Wild",
+      "danger_level": "Moderate",
+      "as_pet": "Not Suitable as Pet",
+      "cultural_significance": "Across Eurasia, Africa, and the Americas, eagles are long symbols of power, watchfulness, and rule in state emblems, military flags, and religious art. In Central Asia they are used in falconry, and conservation like reintroduction, laws, and stopping poisoning has made some eagles symbols of recovery and environmental health."
+    },
+    "lists": {
+      "locations": {
+        "count": 42,
+        "first": "Argentina"
+      },
+      "also_known_as": {
+        "count": 3,
+        "first": "Raptors"
+      },
+      "distinguishing_features": {
+        "count": 5,
+        "first": "Large-bodied diurnal raptors with broad wings for soaring"
+      },
+      "communication": {
+        "count": 11,
+        "first": "High-pitched whistles and piping calls: Often used in pair contact and at the nest"
+      },
+      "did_you_know": {
+        "count": 6,
+        "first": "Size range across \"eagles\" in Accipitridae: ~40-105 cm body length, ~1.0-2.5 m wingspan, and roughly ~0.5-9 kg mass (smallest booted-type eagles to the largest sea-eagles)."
+      },
+      "adaptations": {
+        "count": 6,
+        "first": "Powerful feet and talons: enlarged toe flexor tendons and sharply curved talons deliver a high-grip, puncturing \"locking\" hold during prey capture."
+      },
+      "behaviors": {
+        "count": 6,
+        "first": "Soaring and scanning: many rely on broad wings and thermal soaring to patrol huge home ranges; forest eagles may use more flap-and-glide ambush tactics-behavior varies with habitat."
+      },
+      "myths_legends": {
+        "count": 6,
+        "first": "Ancient Greece: Zeus's eagle serves as the god's messenger and emblem of authority; in another famous tale, an eagle is sent to torment Prometheus by devouring his regenerating liver."
+      }
+    },
+    "article": {
+      "has_intro": false,
+      "headings": [
+        "6 Incredible Eagle Facts",
+        "Classification and Scientific Name",
+        "Evolution and Origins",
+        "Common Types of Eagles",
+        "Appearance",
+        "Behavior",
+        "Habitat",
+        "Diet",
+        "Predators and Threats",
+        "Reproduction, Babies, and Lifespan",
+        "Population",
+        "Eagles in the Zoo"
+      ]
+    }
+  },
+  "frog": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Frog",
+      "scientific_name": "Anura",
+      "class": "Amphibia",
+      "taxon_level": "Order",
+      "summary": "Frogs (order Anura) are tailless amphibians characterized by powerful hind limbs, saltatory locomotion (jumping), and a life cycle that often includes aquatic larvae (tadpoles) and terrestrial or semi-aquatic adults. The group includes what are commonly called both frogs and toads.",
+      "status": "Not Evaluated",
+      "lifespan_wild": "1–20 years",
+      "lifespan_captivity": "2–40 years",
+      "social": "Chorus",
+      "group_size": 50,
+      "activity": "Nocturnal, Diurnal, Crepuscular, Cathemeral",
+      "diet": "Omnivore",
+      "domestication": "Wild",
+      "danger_level": "Low",
+      "as_pet": "Suitable as Pet",
+      "cultural_significance": "In many cultures frogs link to rain, fertility, and change because they appear after storms and change from tadpoles. People eat frog legs in some places. Scientists use frogs like Xenopus. They eat insects, feed predators, and warn of environmental health."
+    },
+    "lists": {
+      "locations": {
+        "count": 55,
+        "first": "Argentina"
+      },
+      "also_known_as": {
+        "count": 4,
+        "first": "Toad"
+      },
+      "distinguishing_features": {
+        "count": 5,
+        "first": "Adult tailless body plan (unlike salamanders)"
+      },
+      "communication": {
+        "count": 10,
+        "first": "advertisement calls: Mate attraction and spacing"
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "Size range is extreme: the smallest adult frogs are ~7.7 mm long, while the largest reach ~32 cm and can weigh over 3 kg."
+      },
+      "adaptations": {
+        "count": 7,
+        "first": "Powerful hind limbs and a fused, spring-like skeleton (including the urostyle) enable efficient jumping; proportions vary from long-legged jumpers to squat burrowers."
+      },
+      "behaviors": {
+        "count": 7,
+        "first": "Saltatory locomotion (jumping) is common, but many species also climb, burrow, swim, or even glide between trees; lifestyles span deserts to cloud forests."
+      },
+      "myths_legends": {
+        "count": 7,
+        "first": "Ancient Egypt: Heqet (Heket), a frog-headed goddess, was associated with fertility and childbirth, reflecting the Nile's life-giving floods and the abundance of frogs afterward."
+      }
+    },
+    "article": {
+      "has_intro": false,
+      "headings": [
+        "5 Incredible Frog Facts",
+        "Evolution",
+        "Classification and Scientific Name",
+        "Appearance",
+        "Behavior",
+        "Habitat",
+        "Hunting skills",
+        "Predators and Threats",
+        "Reproduction, Babies, and Lifespan",
+        "Population",
+        "Frogs as Pets",
+        "Frogs in the Zoo",
+        "What Is a Group of Frogs Called?"
+      ]
+    }
+  },
+  "gorilla": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Gorilla",
+      "scientific_name": "Gorilla",
+      "class": "Mammalia",
+      "taxon_level": "Genus",
+      "summary": "Gorillas are the largest living primates and are one of the great apes (family Hominidae). They are primarily terrestrial, herbivorous/folivorous, highly social, and live in cohesive groups typically led by a dominant adult male (a \"silverback\"). The genus comprises two living species (western and eastern gorillas) with multiple subspecies.",
+      "status": "Endangered",
+      "lifespan_wild": "25–45 years",
+      "lifespan_captivity": "35–60 years",
+      "social": "Troop",
+      "group_size": 12,
+      "activity": "Diurnal, Crepuscular",
+      "diet": "Herbivore",
+      "domestication": "Wild",
+      "danger_level": "Moderate",
+      "as_pet": "Not Suitable as Pet",
+      "cultural_significance": "Gorillas are key symbols in Central Africa and worldwide, shown in stories and art. They shaped wildlife science and support ecotourism (e.g., mountain-gorilla trekking) that can fund protected areas and local jobs, while raising debates about forests, mining, and disease."
+    },
+    "lists": {
+      "locations": {
+        "count": 10,
+        "first": "Angola"
+      },
+      "also_known_as": {
+        "count": 3,
+        "first": "great ape"
+      },
+      "distinguishing_features": {
+        "count": 4,
+        "first": "Very large-bodied great apes with long arms and predominantly knuckle-walking locomotion"
+      },
+      "communication": {
+        "count": 12,
+        "first": "Grunts: Contact/foraging, reassurance"
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "Size range across the genus: adult males ~135-220+ kg, females ~70-110 kg; standing height about ~1.2-1.8 m (females smaller, males larger)."
+      },
+      "adaptations": {
+        "count": 6,
+        "first": "Powerful chewing anatomy: large jaws and molars, strong jaw muscles (often with a sagittal crest in adult males) support processing tough vegetation."
+      },
+      "behaviors": {
+        "count": 7,
+        "first": "Cohesive group living: typically a dominant adult male (\"silverback\") leads a group with females and young; some groups include multiple adult males, and group structure can shift after takeovers or male dispersal."
+      },
+      "myths_legends": {
+        "count": 4,
+        "first": "The word 'Gorilla' comes from a classical story said to be by Carthaginian sailor Hanno, later told by Greeks, who described meeting wild, hairy people — inspiring the modern scientific name."
+      }
+    },
+    "article": {
+      "has_intro": false,
+      "headings": [
+        "6 Incredible Gorilla Facts",
+        "Classification and Scientific Name",
+        "Evolution and Origin",
+        "Appearance and Behavior",
+        "Habitat",
+        "Diet",
+        "Predators and Threats",
+        "Reproduction, Babies, and Lifespan",
+        "Population",
+        "Gorillas In the Zoo"
+      ]
+    }
+  },
+  "green-bottle-blue-tarantula": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Green Bottle Blue Tarantula",
+      "scientific_name": "Chromatopelma cyaneopubescens",
+      "class": "Arachnida",
+      "taxon_level": "Species",
+      "summary": "A New World tarantula species widely known in the pet trade for its striking metallic blue legs, orange abdomen, and greenish carapace, and for producing heavy webbing.",
+      "status": "Not Evaluated",
+      "lifespan_wild": "3–12 years",
+      "lifespan_captivity": "3–15 years",
+      "social": "Solitary",
+      "group_size": 1,
+      "activity": "Nocturnal, Crepuscular",
+      "diet": "Insectivore",
+      "domestication": "Wild",
+      "danger_level": "Low",
+      "as_pet": "Suitable as Pet",
+      "cultural_significance": "Chromatopelma cyaneopubescens (Greenbottle blue, GBB) is a popular pet tarantula, known for bright blue legs, orange abdomen, and green carapace and for heavy webbing. It often is a gateway for learning tarantula traits like urticating hairs, male and female size and molts."
+    },
+    "lists": {
+      "locations": {
+        "count": 1,
+        "first": "Venezuela"
+      },
+      "also_known_as": {
+        "count": 3,
+        "first": "GBB"
+      },
+      "distinguishing_features": {
+        "count": 4,
+        "first": "Metallic blue legs with contrasting orange setae on the abdomen"
+      },
+      "communication": {
+        "count": 5,
+        "first": "none: No known airborne vocal communication; interactions are primarily mechanical/chemical"
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "This is the only species in its genus: Chromatopelma Strand, 1907 (type species C. cyaneopubescens; World Spider Catalog)."
+      },
+      "adaptations": {
+        "count": 5,
+        "first": "Urticating hairs (abdominal setae): detachable barbed hairs that irritate mucous membranes/skin-an effective predator-deterrent common to many New World theraphosids (Cooke, Roth & Miller 1972)."
+      },
+      "behaviors": {
+        "count": 6,
+        "first": "Heavy webber: builds extensive sheet-and-tunnel webbing that can cover much of its enclosure or natural retreat area; prey is often intercepted on the web surface."
+      },
+      "myths_legends": {
+        "count": 5,
+        "first": "Arachne (Greek mythology): a master weaver who challenged Athena and was transformed into a spider-one of the most influential Old World legends linking spiders with weaving, pride, and transformation."
+      }
+    },
+    "article": {
+      "has_intro": true,
+      "headings": [
+        "Amazing Green Bottle Blue Tarantula Facts",
+        "Green Bottle Blue Tarantula Scientific Name",
+        "Green Bottle Blue Tarantula Appearance",
+        "Green Bottle Blue Tarantula Behavior",
+        "Green Bottle Blue Tarantula Habitat",
+        "Green Bottle Blue Tarantula Predators and Threats",
+        "Reproduction, Babies, and Lifespan",
+        "Population"
+      ]
+    }
+  },
+  "norway-rat": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Norway Rat",
+      "scientific_name": "Rattus norvegicus",
+      "class": "Mammalia",
+      "taxon_level": "Species",
+      "summary": "The Norway rat (Rattus norvegicus), also called the brown rat, is a large murid rodent native to northern China/Mongolia region but now cosmopolitan, closely associated with human settlements. It is a major commensal species and a common model organism in biomedical research.",
+      "status": "Least Concern",
+      "lifespan_wild": "0.25–3 years",
+      "lifespan_captivity": "2–4 years",
+      "social": "Colony",
+      "group_size": 30,
+      "activity": "Nocturnal, Crepuscular, Cathemeral",
+      "diet": "Omnivore",
+      "domestication": "Semi domesticated",
+      "danger_level": "Moderate",
+      "as_pet": "Suitable as Pet",
+      "cultural_significance": "The Norway rat (Rattus norvegicus) lives with people in cities, ports, and sewers, spread worldwide, and became the common lab rat for biology and genetics. It links to sanitation problems and diseases like Leptospira and Seoul virus; avoid urine/feces and remove food and shelter."
+    },
+    "lists": {
+      "locations": {
+        "count": 2,
+        "first": "China"
+      },
+      "also_known_as": {
+        "count": 8,
+        "first": "Brown rat"
+      },
+      "distinguishing_features": {
+        "count": 4,
+        "first": "Robust body, relatively small ears compared with black/roof rat"
+      },
+      "communication": {
+        "count": 9,
+        "first": "Ultrasonic ~22 kHz alarm/negative-affect calls during threat, defeat, or distress: Brudzynski 2013"
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "Native range is most often traced to northern China-Mongolia, yet today it's established on every continent except Antarctica (IUCN)."
+      },
+      "adaptations": {
+        "count": 6,
+        "first": "Body plan for burrowing: stocky build, strong forelimbs, and ground-dwelling habits-contrasting with the more climbing-adapted roof rat (Rattus rattus)."
+      },
+      "behaviors": {
+        "count": 8,
+        "first": "Commensal urban living: concentrates around food waste, warehouses, docks/ports, and sewer networks; activity patterns shift with human disturbance and control pressure."
+      },
+      "myths_legends": {
+        "count": 6,
+        "first": "In the Chinese Zodiac Great Race, the Rat (often linked to Rattus norvegicus) won first by riding the Ox and jumping ahead, making the Rat a symbol of being clever and taking chances."
+      }
+    },
+    "article": {
+      "has_intro": true,
+      "headings": [
+        "Identifying a Norway Rat",
+        "Activity and Senses",
+        "Their Nests",
+        "Reproductive Cycles of Norway Rats",
+        "Norway Rat Diet",
+        "Social Behavior of Norway Rats",
+        "Diseases Carried by Norway Rats"
+      ]
+    }
+  },
+  "papillon": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Papillon",
+      "scientific_name": "Canis lupus familiaris",
+      "class": "Mammalia",
+      "taxon_level": "Species",
+      "summary": "Papillon is a small toy dog breed, historically linked to the Continental Toy Spaniel; it is characterized by its fine-boned build and distinctive large, fringed ears resembling butterfly wings (hence the name).",
+      "status": "Not Evaluated",
+      "lifespan_wild": "2–10 years",
+      "lifespan_captivity": "12–17 years",
+      "social": "Pack",
+      "group_size": 3,
+      "activity": "Diurnal, Crepuscular",
+      "diet": "Omnivore",
+      "domestication": "Domesticated",
+      "danger_level": "Low",
+      "as_pet": "Suitable as Pet",
+      "cultural_significance": "Papillon (Canis lupus familiaris) are linked to European courts from the Renaissance through the 18th–19th centuries, shown in portraits as lap pets. Their \"butterfly\" ears became an art symbol. Today they are companions, sport dogs, and examples of selective breeding."
+    },
+    "lists": {
+      "locations": {
+        "count": 2,
+        "first": "France"
+      },
+      "also_known_as": {
+        "count": 4,
+        "first": "Butterfly Dog"
+      },
+      "distinguishing_features": {
+        "count": 3,
+        "first": "Very large, upright ears with long fringe (the classic “papillon” look); a drop-eared variety is sometimes called “Phalène.”"
+      },
+      "communication": {
+        "count": 10,
+        "first": "High-pitched alert bark for strangers or novel sounds"
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "The breed name Papillon means \"butterfly,\" inspired by the large, fringed ears that resemble wings."
+      },
+      "adaptations": {
+        "count": 5,
+        "first": "Sound localization from oversized, mobile ears: Papillons' large, erect pinnae can help capture and funnel sound efficiently-useful for an alert companion dog."
+      },
+      "behaviors": {
+        "count": 7,
+        "first": "\"Velcro companion\" tendencies: many Papillons prefer staying close to their person and tracking them room-to-room, reflecting their history as lap and court companions."
+      },
+      "myths_legends": {
+        "count": 4,
+        "first": "French naming lore tells that admirers likened the little spaniel's fringed, upright ears to a butterfly's wings, giving rise to the poetic name \"Papillon.\""
+      }
+    },
+    "article": {
+      "has_intro": false,
+      "headings": [
+        "3 Pros And Cons Of Owning A Papillon",
+        "Size And Weight",
+        "Common Health Issues",
+        "Temperament",
+        "How To Take Care Of Papillons",
+        "Papillons And Children",
+        "Dogs Similar To The Papillon",
+        "Famous Papillons"
+      ]
+    }
+  },
+  "pigeon": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Pigeon",
+      "scientific_name": "Columbidae",
+      "class": "Aves",
+      "taxon_level": "Family",
+      "summary": "Columbidae comprises pigeons and doves—medium-bodied birds found worldwide, known for strong flight, seed/fruit-based diets, and unique production of nutrient-rich 'crop milk' for feeding young.",
+      "status": "Not Evaluated",
+      "lifespan_wild": "1–20 years",
+      "lifespan_captivity": "5–35 years",
+      "social": "Flock",
+      "group_size": 25,
+      "activity": "Diurnal, Crepuscular",
+      "diet": "Omnivore",
+      "domestication": "Semi domesticated",
+      "danger_level": "Low",
+      "as_pet": "Suitable as Pet",
+      "cultural_significance": "Pigeons and doves (Columbidae) are important in cultures: the dove is a symbol of peace and purity; rock pigeons were tamed long ago for food (squab), ritual, and carrying messages; homing pigeons helped in war and racing. City, island, and forest pigeons spread seeds and shape how people see wildlife."
+    },
+    "lists": {
+      "locations": {
+        "count": 37,
+        "first": "Argentina"
+      },
+      "also_known_as": {
+        "count": 7,
+        "first": "Pigeons"
+      },
+      "distinguishing_features": {
+        "count": 4,
+        "first": "Stout body with small head and short neck; generally strong, direct flight"
+      },
+      "communication": {
+        "count": 9,
+        "first": "Soft coos and repetitive advertising calls used in mate attraction and territory signaling."
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "Size range across Columbidae: ~14-80 cm long and roughly ~30 g to ~3 kg (from tiny ground-doves to giant crowned pigeons)."
+      },
+      "adaptations": {
+        "count": 5,
+        "first": "Crop milk production in both sexes (in many species) lets parents deliver a high-energy, protein- and fat-rich food to chicks when seeds/fruits are hard to digest early in life."
+      },
+      "behaviors": {
+        "count": 6,
+        "first": "Biparental teamwork is common: pairs often share nest-building, incubation, and chick-feeding; many species form long-term pair bonds, though fidelity varies."
+      },
+      "myths_legends": {
+        "count": 6,
+        "first": "In the Hebrew Bible flood story (Genesis), Noah releases a dove; it returns with an olive leaf, becoming a lasting symbol of hope and peace."
+      }
+    },
+    "article": {
+      "has_intro": false,
+      "headings": [
+        "5 Amazing Pigeon Facts",
+        "Where To Find Pigeons",
+        "Classification and Scientific Name",
+        "Evolution And Origin",
+        "Types Of Pigeons",
+        "Appearance",
+        "Behavior",
+        "Diet",
+        "Predators And Threats",
+        "Reproduction, Babies, And Lifespan",
+        "Population"
+      ]
+    }
+  },
+  "psittacosaurus": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Psittacosaurus",
+      "scientific_name": "Psittacosaurus",
+      "class": "Reptilia",
+      "taxon_level": "Genus",
+      "summary": "Psittacosaurus is a genus of small, bipedal-to-facultatively quadrupedal ceratopsian dinosaurs (“parrot lizards”), among the most abundant and well-sampled dinosaurs from the Early Cretaceous of Asia.",
+      "status": "Not Evaluated",
+      "lifespan_wild": "8–20 years",
+      "lifespan_captivity": null,
+      "social": "Herd",
+      "group_size": 8,
+      "activity": "Diurnal, Cathemeral",
+      "diet": "Herbivore",
+      "domestication": "Wild",
+      "danger_level": null,
+      "as_pet": "Not Suitable as Pet",
+      "cultural_significance": "Psittacosaurus is a key Early Cretaceous Asian dinosaur, especially in Mongolia and northern China. Its many well-preserved fossils help scientists study growth, behavior, and soft tissues. Museums use it to show horned dinosaurs began as small, beaked animals."
+    },
+    "lists": {
+      "locations": {
+        "count": 3,
+        "first": "China"
+      },
+      "also_known_as": {
+        "count": 4,
+        "first": "parrot-beaked dinosaur"
+      },
+      "distinguishing_features": {
+        "count": 4,
+        "first": "Parrot-like beak (rostral bone) and deep skull typical of early ceratopsians"
+      },
+      "communication": {
+        "count": 6,
+        "first": "Low-frequency grunts or booms for spacing and contact within groups: Speculative"
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "Psittacosaurus is one of the most fossil-rich dinosaur genera-thousands of specimens spanning hatchlings to adults."
+      },
+      "adaptations": {
+        "count": 5,
+        "first": "Parrot-like rostral beak for cropping vegetation-an early ceratopsian hallmark, present across the genus but with species-level variation in snout shape."
+      },
+      "behaviors": {
+        "count": 5,
+        "first": "Facultative bipedality: many species likely ran or traveled bipedally but could drop to all fours for slow browsing or stability; limb proportions vary among species."
+      },
+      "myths_legends": {
+        "count": 3,
+        "first": "There are no well-attested ancient folklore traditions specifically about Psittacosaurus (it was unknown to historical cultures as a named animal)."
+      }
+    },
+    "article": {
+      "has_intro": false,
+      "headings": [
+        "Description and Size",
+        "Diet – What Did Psittacosaurus Eat?",
+        "Habitat – When and Where Did Psittacosaurus Live?",
+        "Threats And Predators",
+        "Discoveries and Fossils – Where Psittacosaurus Was Found",
+        "Extinction – When Did Psittacosaurus Die Out?",
+        "Similar Animals to Psittacosaurus"
+      ]
+    }
+  },
+  "sei-whale": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Sei Whale",
+      "scientific_name": "Balaenoptera borealis",
+      "class": "Mammalia",
+      "taxon_level": "Species",
+      "summary": "The sei whale is a large baleen whale (a rorqual) in the family Balaenopteridae, known for streamlined shape, baleen filter-feeding, and broad oceanic distribution, often in temperate and subpolar waters.",
+      "status": "Endangered",
+      "lifespan_wild": "50–70 years",
+      "lifespan_captivity": "0 years",
+      "social": "Pod",
+      "group_size": 2,
+      "activity": "Cathemeral",
+      "diet": "Filter Feeder",
+      "domestication": "Wild",
+      "danger_level": "Low",
+      "as_pet": "Not Suitable as Pet",
+      "cultural_significance": "The sei whale (Balaenoptera borealis) was heavily hunted in 20th-century industrial whaling, with over 200,000 taken. It is now Endangered, legally protected, and still threatened by entanglement, ship strikes, ocean noise, and climate effects on prey."
+    },
+    "lists": {
+      "locations": {
+        "count": 9,
+        "first": "North Atlantic"
+      },
+      "also_known_as": {
+        "count": 3,
+        "first": "Pollack whale"
+      },
+      "distinguishing_features": {
+        "count": 4,
+        "first": "Large rorqual with ventral throat pleats and a relatively tall, hooked dorsal fin"
+      },
+      "communication": {
+        "count": 5,
+        "first": "Low-frequency calls used over long range; downswept signals documented in the North Atlantic: E.g., Delarue et al., 2009, JASA"
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "Size: adults typically ~12-16 m; maximum recorded ~20.1 m (female) and ~18.6 m (male) (NOAA Fisheries; field guides)."
+      },
+      "adaptations": {
+        "count": 5,
+        "first": "Streamlined \"rorqual\" build for efficiency and speed: a relatively slender body and pointed rostrum reduce drag during long-distance travel and rapid feeding chases."
+      },
+      "behaviors": {
+        "count": 5,
+        "first": "Offshore, wide-ranging travel: most often seen in deep, open water; typically solitary or in small groups (often 1-3, sometimes larger at feeding aggregations)."
+      },
+      "myths_legends": {
+        "count": 4,
+        "first": "Arctic sea-mother traditions: a powerful sea mother controls the availability of seals and whales; respectful behavior and ritual observance ensure marine mammals return."
+      }
+    },
+    "article": {
+      "has_intro": false,
+      "headings": [
+        "4 Incredible Sei Whale Facts",
+        "Classification and Scientific Name",
+        "Appearance",
+        "Distribution, Population, and Habitat",
+        "Predators and Prey",
+        "Reproduction and Lifespan",
+        "Fishing and Cooking",
+        "Population"
+      ]
+    }
+  },
+  "toxodon": {
+    "is_animal_page": true,
+    "fields": {
+      "name": "Toxodon",
+      "scientific_name": "Toxodon",
+      "class": "Mammalia",
+      "taxon_level": "Genus",
+      "summary": "Toxodon was a large, heavy-bodied extinct South American herbivorous mammal (a notoungulate) with robust limbs and high-crowned teeth, adapted for grazing. It lived during the Pleistocene and is a classic component of South American megafauna, with fossils widespread across the continent.",
+      "status": "Not Evaluated",
+      "lifespan_wild": "15–40 years",
+      "lifespan_captivity": null,
+      "social": "Herd",
+      "group_size": 8,
+      "activity": "Cathemeral, Diurnal, Crepuscular",
+      "diet": "Herbivore",
+      "domestication": "Wild",
+      "danger_level": null,
+      "as_pet": "Not Suitable as Pet",
+      "cultural_significance": "Toxodon is an icon of South American Ice Age megafauna. Darwin's finds helped shape early evolutionary thinking, and the genus remains central in museums and public science about extinct native mammals."
+    },
+    "lists": {
+      "locations": {
+        "count": 5,
+        "first": "Argentina"
+      },
+      "also_known_as": {
+        "count": 0,
+        "first": null
+      },
+      "distinguishing_features": {
+        "count": 4,
+        "first": "Large, rhino-like body proportions"
+      },
+      "communication": {
+        "count": 8,
+        "first": "grunts"
+      },
+      "did_you_know": {
+        "count": 7,
+        "first": "Across the genus, adults were roughly hippo-sized: about 2.5-3.5 m long and ~900-2,000+ kg."
+      },
+      "adaptations": {
+        "count": 5,
+        "first": "Very high-crowned cheek teeth helped withstand extreme tooth wear from silica-rich grasses and windblown grit."
+      },
+      "behaviors": {
+        "count": 5,
+        "first": "Feeding was dominated by grazing, though some populations likely mixed in browse depending on local vegetation."
+      },
+      "myths_legends": {
+        "count": 3,
+        "first": "In parts of the Río de la Plata region, oversized fossil bones were historically shown as \"giants' remains,\" echoing local tales of ancient colossal beings."
+      }
+    },
+    "article": {
+      "has_intro": false,
+      "headings": [
+        "Description & Size",
+        "Diet – What Did Toxodon Eat?",
+        "Habitat – When and Where It lived",
+        "Threats And Predators",
+        "Discoveries and Fossils – Where It was Found",
+        "Extinction – When Did It Die Out?",
+        "Similar Animals to The Toxodon"
+      ]
+    }
+  }
+}

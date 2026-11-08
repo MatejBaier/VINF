@@ -1,0 +1,132 @@
+def not_ready(name):
+    def handler():
+        print(f"'{name}' is not implemented yet.")
+    return handler
+
+
+def crawl_test():
+    from modules import crawler
+    crawler.crawl(max_pages=5)
+
+
+def crawl_full():
+    from modules import crawler
+    crawler.crawl()
+
+
+def crawl_reset():
+    from modules import crawler
+    if input("Really delete crawl state? (y/n): ").strip().lower() == "y":
+        crawler.reset()
+
+def show_stats():
+    from modules import stats
+    stats.show()
+
+
+def extract_all():
+    from modules import extractor
+    extractor.run()
+
+
+def extract_show():
+    from modules import extractor
+    extractor.show_record()
+
+
+def extract_missing():
+    from modules import extractor
+    extractor.show_missing()
+
+
+def extract_tests():
+    import unittest
+    tests = unittest.defaultTestLoader.loadTestsFromName("tests.test_extractor")
+    unittest.TextTestRunner(verbosity=2).run(tests)
+
+
+def show_token_stats():
+    from modules import token_stats
+    token_stats.show()
+
+
+def index_build():
+    from modules import indexer
+    indexer.build()
+
+
+def index_stats():
+    from modules import indexer
+    indexer.show_stats()
+
+
+def search_run():
+    from modules import search
+    search.run()
+
+
+def search_compare():
+    from modules import search
+    search.compare()
+
+
+MENU = [
+    ("1", "Crawler - test run (5 pages)", crawl_test),
+    ("2", "Crawler - full run / resume", crawl_full),
+    ("3", "Crawler - RESET state", crawl_reset),
+    ("4", "Crawler - statistics", show_stats),
+    (None, "", None),
+    ("5", "Extractor - parse HTMLs", extract_all),
+    ("6", "Extractor - show record", extract_show),
+    ("7", "Extractor - missing fields", extract_missing),
+    ("8", "Extractor - unit tests", extract_tests),
+    ("9", "Extractor - token statistics (tiktoken)", show_token_stats),
+    (None, "", None),
+    ("10", "Indexer - build index", index_build),
+    ("11", "Indexer - statistics", index_stats),
+    (None, "", None),
+    ("12", "Search", search_run),
+    ("13", "Search - compare scoring / idf methods", search_compare),
+]
+
+HANDLERS = {}
+for key, label, handler in MENU:
+    if key is not None:
+        HANDLERS[key] = handler
+
+
+def print_menu():
+    for key, label, _ in MENU:
+        if key is None:
+            print()                 # empty line between logical parts
+        else:
+            print(f"{key}) {label}")
+    print("\n0) Exit")
+
+
+def main():
+    while True:
+        print("\n==========================")
+        print_menu()
+        choice = input("\nChoose: ").strip()
+
+        if choice == "0":
+            break
+        handler = HANDLERS.get(choice)
+        if handler is None:
+            print("Invalid choice.")
+            continue
+
+        print("==========================")
+
+        try:
+            handler()                       # run the selected action
+        except KeyboardInterrupt:
+            print("\nInterrupted, back to menu.")
+        except Exception as e:
+            print(f"Error: {type(e).__name__}: {e}")
+
+
+
+if __name__ == "__main__":
+    main()

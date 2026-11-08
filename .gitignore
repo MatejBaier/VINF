@@ -1,0 +1,39 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+venv/
+
+# macOS
+.DS_Store
+__MACOSX/
+._*
+
+# IDE
+.vscode/
+.idea/
+
+# Data (crawled pages, extracted records, index, crawl state)
+data/
+
+# Wikipedia dumps
+*.xml
+*.xml.bz2
+*.bz2
+
+# Spark
+spark-warehouse/
+metastore_db/
+derby.log
+*.parquet
+_SUCCESS
+.*.crc
+
+# Lucene index
+lucene_index/
+
+# Logs and temporary files
+*.log
+*.tmp
