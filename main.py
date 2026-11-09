@@ -80,6 +80,21 @@ def spark_animals_compare():
     spark_animals.compare()
 
 
+def spark_wiki_sample():
+    from modules import spark_wiki
+    spark_wiki.run(full=False)
+
+
+def spark_wiki_full():
+    from modules import spark_wiki
+    spark_wiki.run(full=True)
+
+
+def spark_wiki_show():
+    from modules import spark_wiki
+    spark_wiki.show_record()
+
+
 MENU = [
     ("1", "Crawler - test run (5 pages)", crawl_test),
     ("2", "Crawler - full run / resume", crawl_full),
@@ -100,6 +115,9 @@ MENU = [
     (None, "", None),
     ("14", "Spark - extract animals", spark_animals_run),
     ("15", "Spark - compare with part 1 extractor", spark_animals_compare),
+    ("16", "Spark - process wiki dump (sample)", spark_wiki_sample),
+    ("17", "Spark - process wiki dump (full)", spark_wiki_full),
+    ("18", "Spark - show wiki record", spark_wiki_show),
 ]
 
 HANDLERS = {}

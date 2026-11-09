@@ -95,3 +95,12 @@ SPARK_DRIVER_MEMORY = "16g"
 RAW_PAGES_FILE = DATA_DIR / "raw_pages.jsonl"       # ZIP converted for Spark, one page per line
 SPARK_DIR = DATA_DIR / "spark"
 SPARK_ANIMALS_DIR = SPARK_DIR / "animals"           # Spark output, part-* files with one animal per line
+
+
+
+
+# wiki dump
+WIKI_DUMP_FILE = Path.home() / "Desktop" / "enwiki-20261001-pages-articles.xml.bz2"
+WIKI_SAMPLE_FILE = Path.home() / "Desktop" / "enwiki-sample.xml.bz2"     # first 6938 pages of the dump, for development
+WIKI_TAXA_DIR = SPARK_DIR / "wiki_taxa"                 # articles with taxonomy infobox, one per line
+WIKI_REDIRECTS_DIR = SPARK_DIR / "wiki_redirects"       # redirects pointing to taxon articles (Vulpes vulpes -> Red fox)
