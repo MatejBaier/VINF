@@ -83,3 +83,15 @@ TOP_K = 10
 SPREAD_BASE = 0.5       # spread scoring: base part, coverage (0..1) is added to it
 
 TIKTOKEN_ENCODING = "o200k_base"
+
+
+#=========================================================================
+
+
+# spark
+SPARK_MASTER = "local[*]"
+SPARK_DRIVER_MEMORY = "16g"
+
+RAW_PAGES_FILE = DATA_DIR / "raw_pages.jsonl"       # ZIP converted for Spark, one page per line
+SPARK_DIR = DATA_DIR / "spark"
+SPARK_ANIMALS_DIR = SPARK_DIR / "animals"           # Spark output, part-* files with one animal per line

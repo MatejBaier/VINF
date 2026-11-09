@@ -70,6 +70,16 @@ def search_compare():
     search.compare()
 
 
+def spark_animals_run():
+    from modules import spark_animals
+    spark_animals.run()
+
+
+def spark_animals_compare():
+    from modules import spark_animals
+    spark_animals.compare()
+
+
 MENU = [
     ("1", "Crawler - test run (5 pages)", crawl_test),
     ("2", "Crawler - full run / resume", crawl_full),
@@ -87,6 +97,9 @@ MENU = [
     (None, "", None),
     ("12", "Search", search_run),
     ("13", "Search - compare scoring / idf methods", search_compare),
+    (None, "", None),
+    ("14", "Spark - extract animals", spark_animals_run),
+    ("15", "Spark - compare with part 1 extractor", spark_animals_compare),
 ]
 
 HANDLERS = {}
