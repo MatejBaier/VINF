@@ -17,8 +17,13 @@ ARTICLE_NAMESPACE = 0       # namespace of normal articles, others are talk page
 
 
 
-# Infobox with taxonomy, "taxobox colour" and similar templates do not match
-INFOBOX_REGEX = re.compile(r"\{\{\s*(Speciesbox|Subspeciesbox|Infraspeciesbox|Automatic taxobox|Taxobox)\s*(?=\||\n|\}\})", re.IGNORECASE)
+# Infobox with taxonomy or breed (Infobox dog breed, Infobox cattle breed ...), "taxobox colour" and similar templates do not match
+# space and _ are the same in template names, {{Automatic_taxobox}} = {{Automatic taxobox}}
+INFOBOX_REGEX = re.compile(
+    r"\{\{\s*(Speciesbox|Subspeciesbox|Infraspeciesbox|Automatic[ _]taxobox|Taxobox|Population[ _]taxobox|Paraphyletic[ _]group|Hybridbox"
+    r"|Infobox[ _][a-z]+(?:[ _][a-z]+)?[ _]breed)\s*(?=\||\n|\}\})",
+    re.IGNORECASE,
+)
 BRACES_REGEX = re.compile(r"\{\{|\}\}")                                     # used to find the end of the infobox
 INNER_TEMPLATE_REGEX = re.compile(r"\{\{[^{}]*\}\}")                        # template without other templates inside
 CONVERT_REGEX = re.compile(r"\{\{\s*(?:[Cc]onvert|[Cc]vt)\s*\|\s*([\d.,]+)\s*\|\s*(?:(to|and|-|–)\s*\|\s*([\d.,]+)\s*\|\s*)?([^|{}]+)[^{}]*\}\}")     # {{convert|46|to|68|cm}}
@@ -158,7 +163,8 @@ def find_infobox(text):
 
         if depth == 0:
             body = text[start.end():brace.start()]
-            return start.group(1).capitalize(), body, brace.end()
+            infobox_type = start.group(1).replace("_", " ").capitalize()
+            return infobox_type, body, brace.end()
 
     return None             # infobox is not closed, broken page
 
@@ -186,14 +192,21 @@ def join_names(*parts):
     return " ".join(parts)
 
 
+def is_breed(infobox_type):
+    return infobox_type.endswith("breed")
+
+
 def scientific_name(infobox_type, params, title):
+    if is_breed(infobox_type):
+        return None             # breeds have no own scientific name
+
     if params.get("taxon"):
         return params["taxon"]
 
     if infobox_type == "Speciesbox":
         return join_names(params.get("genus"), params.get("species"))
 
-    if infobox_type == "Subspeciesbox":
+    if infobox_type in ("Subspeciesbox", "Population taxobox"):
         return join_names(params.get("genus"), params.get("species"), params.get("subspecies"))
 
     if infobox_type == "Infraspeciesbox":
@@ -201,6 +214,9 @@ def scientific_name(infobox_type, params, title):
 
     if infobox_type == "Automatic taxobox":
         return TITLE_BRACKETS_REGEX.sub("", title)       # without taxon parameter the page title is the taxon
+
+    if infobox_type in ("Paraphyletic group", "Hybridbox"):
+        return None             # group of more taxa (squid) or hybrid (mule), joined by name
 
     # old Taxobox, the lowest rank which is filled
     for field in ("trinomial", "binomial", "genus", "familia", "ordo", "classis"):
@@ -239,7 +255,7 @@ def lead_text(text, start):
 
 
 def extract(page):
-    # one article with taxonomy infobox -> one record, None if it is not a taxon page
+    # one article with taxonomy or breed infobox -> one record, None if it is not a taxon or breed page
     infobox = find_infobox(page["text"])
     if not infobox:
         return None
@@ -258,6 +274,7 @@ def extract(page):
         "authority_year": authority_year(authority_text),
         "status": params.get("status"),
         "status_system": params.get("status_system"),
+        "origin": params.get("country") or params.get("origin"),         # country of origin, only breeds have it
         "categories": [category.strip() for category in CATEGORY_REGEX.findall(page["text"])],
         "lead": lead_text(page["text"], end),
     }

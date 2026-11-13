@@ -80,15 +80,15 @@ def print_run_summary(kinds, infoboxes, taxa_count, redirect_count, seconds):
     print(f" {'all pages:':<26}{sum(kinds.values())}")
     print(f" {'other namespaces:':<26}{kinds.get('other', 0)}")
     print(f" {'redirects:':<26}{kinds.get('redirect', 0)}")
-    print(f" {'articles without taxon:':<26}{kinds.get('article', 0)}")
-    print(f" {'taxon articles:':<26}{kinds.get('taxon', 0)}")
+    print(f" {'other articles:':<26}{kinds.get('article', 0)}")
+    print(f" {'taxon and breed articles:':<26}{kinds.get('taxon', 0)}")
 
-    print("\nTaxon articles by infobox")
+    print("\nTaxon and breed articles by infobox")
     for infobox, count in sorted(infoboxes.items(), key=lambda item: item[1], reverse=True):
-        print(f" {infobox + ':':<26}{count}")
+        print(f" {infobox + ':':<30}{count}")
 
-    print(f"\nSaved {taxa_count} taxa -> {config.WIKI_TAXA_DIR}")
-    print(f"Saved {redirect_count} redirects to taxa -> {config.WIKI_REDIRECTS_DIR}")
+    print(f"\nSaved {taxa_count} taxa and breeds -> {config.WIKI_TAXA_DIR}")
+    print(f"Saved {redirect_count} redirects to them -> {config.WIKI_REDIRECTS_DIR}")
     print(f"\nDone in {seconds / 60:.1f} min")
 
 

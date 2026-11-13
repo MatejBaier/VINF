@@ -104,3 +104,7 @@ WIKI_DUMP_FILE = Path.home() / "Desktop" / "enwiki-20261001-pages-articles.xml.b
 WIKI_SAMPLE_FILE = Path.home() / "Desktop" / "enwiki-sample.xml.bz2"     # first 6938 pages of the dump, for development
 WIKI_TAXA_DIR = SPARK_DIR / "wiki_taxa"                 # articles with taxonomy infobox, one per line
 WIKI_REDIRECTS_DIR = SPARK_DIR / "wiki_redirects"       # redirects pointing to taxon articles (Vulpes vulpes -> Red fox)
+
+# join
+ANIMALS_WIKI_DIR = SPARK_DIR / "animals_wiki"           # animals with attributes from wiki, input for the indexer
+JOIN_UNMATCHED_FILE = DATA_DIR / "join_unmatched.tsv"   # animals without a wiki page
