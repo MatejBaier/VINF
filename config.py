@@ -108,3 +108,22 @@ WIKI_REDIRECTS_DIR = SPARK_DIR / "wiki_redirects"       # redirects pointing to 
 # join
 ANIMALS_WIKI_DIR = SPARK_DIR / "animals_wiki"           # animals with attributes from wiki, input for the indexer
 JOIN_UNMATCHED_FILE = DATA_DIR / "join_unmatched.tsv"   # animals without a wiki page
+
+
+# lucene
+LUCENE_INDEX_DIR = DATA_DIR / "lucene_index"
+
+# fields searched when the query has no field name, with their boosts
+LUCENE_FIELD_BOOSTS = {
+    "name": 4.0,
+    "also_known_as": 3.0,
+    "wiki_names": 3.0,
+    "scientific_name": 3.0,
+    "summary": 2.0,
+    "locations": 1.5,
+    "wiki_categories": 1.5,
+    "origin": 1.5,
+    "facts": 1.0,
+    "article": 1.0,
+    "wiki_lead": 1.0,
+}

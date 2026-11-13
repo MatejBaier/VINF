@@ -105,6 +105,31 @@ def spark_join_show():
     spark_join.show_record()
 
 
+def lucene_build():
+    from modules import lucene_indexer
+    lucene_indexer.build()
+
+
+def lucene_stats():
+    from modules import lucene_indexer
+    lucene_indexer.show_stats()
+
+
+def lucene_search():
+    from modules import lucene_search
+    lucene_search.run()
+
+
+def lucene_examples():
+    from modules import lucene_search
+    lucene_search.examples()
+
+
+def lucene_compare():
+    from modules import lucene_search
+    lucene_search.compare()
+
+
 MENU = [
     ("1", "Crawler - test run (5 pages)", crawl_test),
     ("2", "Crawler - full run / resume", crawl_full),
@@ -130,6 +155,12 @@ MENU = [
     ("18", "Spark - show wiki record", spark_wiki_show),
     ("19", "Spark - join animals with wiki", spark_join_run),
     ("20", "Spark - show joined record", spark_join_show),
+    (None, "", None),
+    ("21", "Lucene - build index", lucene_build),
+    ("22", "Lucene - statistics", lucene_stats),
+    ("23", "Lucene - search", lucene_search),
+    ("24", "Lucene - query type examples", lucene_examples),
+    ("25", "Lucene - compare old vs new index", lucene_compare),
 ]
 
 HANDLERS = {}
