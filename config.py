@@ -91,6 +91,7 @@ TIKTOKEN_ENCODING = "o200k_base"
 # spark
 SPARK_MASTER = "local[*]"
 SPARK_DRIVER_MEMORY = "16g"
+SPARK_HOST = "127.0.0.1"          # Spark driver listens only inside this computer, works on any network (Wi-Fi, VPN)
 
 RAW_PAGES_FILE = DATA_DIR / "raw_pages.jsonl"       # ZIP converted for Spark, one page per line
 SPARK_DIR = DATA_DIR / "spark"
@@ -102,30 +103,30 @@ SPARK_ANIMALS_DIR = SPARK_DIR / "animals"           # Spark output, part-* files
 # wiki dump
 WIKI_DUMP_FILE = Path.home() / "Desktop" / "enwiki-20261001-pages-articles.xml.bz2"
 WIKI_SAMPLE_FILE = Path.home() / "Desktop" / "enwiki-sample.xml.bz2"     # first 6938 pages of the dump, for development
-WIKI_TAXA_DIR = SPARK_DIR / "wiki_taxa"                 # articles with taxonomy infobox, one per line
-WIKI_REDIRECTS_DIR = SPARK_DIR / "wiki_redirects"       # redirects pointing to taxon articles (Vulpes vulpes -> Red fox)
+WIKI_TAXA_DIR = SPARK_DIR / "wiki_taxa"                 # animal articles with taxonomy or breed infobox, one per line
+WIKI_REDIRECTS_DIR = SPARK_DIR / "wiki_redirects"       # redirects pointing to animal articles (Vulpes vulpes -> Red fox)
+WIKI_TAXONOMY_DIR = SPARK_DIR / "wiki_taxonomy"         # taxonomy templates, rank and parent of every taxon (Vulpes -> Vulpini)
 
 # join
-ANIMALS_WIKI_DIR = SPARK_DIR / "animals_wiki"           # animals with attributes from wiki, input for the indexer
-JOIN_UNMATCHED_FILE = DATA_DIR / "join_unmatched.tsv"   # animals without a wiki page
+ANIMALS_WIKI_DIR = SPARK_DIR / "animals_wiki"           # full outer join of a-z animals and wiki animals, input for the indexer
+JOIN_UNMATCHED_FILE = DATA_DIR / "join_unmatched.tsv"   # a-z animals without a wiki page
+JOIN_DUPLICATES_FILE = DATA_DIR / "join_duplicates.tsv" # wiki animals with the same name as an a-z animal, possible missed joins
 
 
 # lucene
 LUCENE_INDEX_DIR = DATA_DIR / "lucene_index"
 
-# fields searched when the query has no field name, with their boosts
+# fields searched when the query has no field name, with their boosts, a-z and wiki records have the same fields
 LUCENE_FIELD_BOOSTS = {
     "name": 4.0,
     "also_known_as": 3.0,
-    "wiki_names": 3.0,
     "scientific_name": 3.0,
     "summary": 2.0,
     "locations": 1.5,
-    "wiki_categories": 1.5,
+    "categories": 1.5,
     "origin": 1.5,
     "facts": 1.0,
     "article": 1.0,
-    "wiki_lead": 1.0,
 }
 
 # old index (part 1) in comparisons, the best combination from part 1

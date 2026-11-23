@@ -14,6 +14,8 @@ def create_session(app_name):
     # one session per run, master and memory are set in config
     builder = SparkSession.builder.master(config.SPARK_MASTER).appName(app_name)
     builder = builder.config("spark.driver.memory", config.SPARK_DRIVER_MEMORY)
+    builder = builder.config("spark.driver.bindAddress", config.SPARK_HOST)
+    builder = builder.config("spark.driver.host", config.SPARK_HOST)
     spark = builder.getOrCreate()
 
     spark.sparkContext.setLogLevel("WARN")      # hide INFO logs, show only warnings and errors

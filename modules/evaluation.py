@@ -136,8 +136,9 @@ def run_old(queries):
 
 
 def run_lucene(queries):
-    # the same text as in the old index, and the query written with fields (if the query has one)
+    # the same text as in the old index and the query with fields (if it has one), only a-z records (source:az) like the other systems
     from modules import lucene_search
+    from modules.spark_join import SOURCE_AZ
 
     prepared = lucene_search.prepare()
     if prepared is None:
@@ -146,7 +147,7 @@ def run_lucene(queries):
 
     def lucene_run(text):
         def function():
-            return lucene_search.search(text, searcher, parsers, top_k=config.EVALUATION_TOP_K)
+            return lucene_search.search(text, searcher, parsers, top_k=config.EVALUATION_TOP_K, source=SOURCE_AZ)
 
         (results, total, search_ms), milliseconds = timed(function)
         return [result["slug"] for result in results], milliseconds

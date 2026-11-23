@@ -4,31 +4,14 @@ import shutil
 import time
 
 import config
-from modules.lucene_utils import create_analyzer, init_lucene, open_directory
+from modules.lucene_utils import INT_FIELDS, create_analyzer, init_lucene, open_directory
 from modules.stats import human_size
 
 
 
 
 
-# a-z status text -> IUCN code, the same codes as in wiki
-STATUS_CODES = {
-    "Least Concern": "LC",
-    "Near Threatened": "NT",
-    "Vulnerable": "VU",
-    "Endangered": "EN",
-    "Critically Endangered": "CR",
-    "Extinct in the Wild": "EW",
-    "Extinct": "EX",
-    "Data Deficient": "DD",
-    "Not Evaluated": "NE",
-}
-IUCN_CODES = {"LC", "NT", "VU", "EN", "CR", "EW", "EX", "DD"}
-
-# wiki page is the animal's own page, its text and names can be indexed
-STRONG_MATCHES = {"scientific_name_and_name", "scientific_name", "scientific_name_redirect", "name", "breed_name"}
-
-# a-z lists, which are put into one text field "facts"
+# a-z lists, which are put into one text field "facts", wiki records do not have them
 FACT_FIELDS = [
     "distinguishing_features",
     "communication",
@@ -38,38 +21,10 @@ FACT_FIELDS = [
     "myths_legends",
 ]
 
-LIFESPAN_REGEX = re.compile(r"([\d.]+)(?:\s*–\s*([\d.]+))?\s*years")       # "10–33 years" -> 10, 33
-
-# wiki categories of extinct animals, "Extant Pleistocene first appearances" does not match
-EXTINCT_CATEGORY_REGEX = re.compile(r"\bextinct\b|\bextinctions\b|\bfossil taxa\b|\bprehistoric\b", re.IGNORECASE)
+LIFESPAN_REGEX = re.compile(r"([\d.]+)(?:\s*[–-]\s*([\d.]+))?\s*years")       # "10–33 years" -> 10, 33
 
 
 
-
-
-def is_fossil(wiki):
-    # prehistoric animals have no IUCN status in wiki, but their categories say it (Pleistocene extinctions, Fossil taxa described in 1794)
-    for category in wiki["categories"]:
-        if EXTINCT_CATEGORY_REGEX.search(category):
-            return True
-    return False
-
-
-def status_code(record):
-    # a-z status, if it is not evaluated, the IUCN status from wiki is used, prehistoric animals get EX
-    code = STATUS_CODES.get(record["status"], "NE")
-    wiki = record["wiki"]
-
-    if code != "NE" or wiki is None or wiki["match_type"] not in STRONG_MATCHES:
-        return code
-
-    if wiki["status"] in IUCN_CODES:
-        system = wiki["status_system"] or "IUCN"
-        if system.upper().startswith("IUCN"):
-            return wiki["status"]
-    if wiki["status"] is None and is_fossil(wiki):
-        return "EX"
-    return code
 
 
 def lifespan(text):
@@ -85,21 +40,6 @@ def lifespan(text):
     return low, high
 
 
-def wiki_names(record):
-    # wiki title and redirects (Alopex lagopus, Polar fox ...), without the names a-z already has
-    wiki = record["wiki"]
-    known = {record["name"].lower()}
-    for alias in record["also_known_as"] or []:
-        known.add(alias.lower())
-
-    names = []
-    for name in [wiki["title"]] + wiki["redirects"]:
-        if name.lower() not in known:
-            known.add(name.lower())
-            names.append(name)
-    return names
-
-
 def split_values(text):
     # "Diurnal, Crepuscular" -> ["Diurnal", "Crepuscular"]
     if not text:
@@ -107,79 +47,78 @@ def split_values(text):
     return [value.strip() for value in text.split(",") if value.strip()]
 
 
+def text_fields(record):
+    # one record -> [(field, value, stored)], a-z, wiki and merged records have the same fields, missing values are skipped
+    fields = []
+
+    # names, the most important for search
+    fields.append(("name", record["name"], True))
+    fields.append(("scientific_name", record["scientific_name"], True))
+    for name in record["also_known_as"]:
+        fields.append(("also_known_as", name, False))
+
+    # full text, a-z article has one more section with the wiki lead in merged records
+    fields.append(("summary", record["summary"], False))
+    for location in record["locations"]:
+        fields.append(("locations", location, False))
+    for category in record["categories"]:
+        fields.append(("categories", category, False))
+    fields.append(("origin", record["origin"], False))
+    fields.append(("facts", record.get("cultural_significance"), False))
+    for field in FACT_FIELDS:
+        for fact in record.get(field) or []:
+            fields.append(("facts", fact, False))
+    for section in record["article"]:
+        fields.append(("article", " ".join(part for part in (section["heading"], section["text"]) if part), False))
+
+    # keyword fields for filters (class:aves AND status:cr AND source:wiki)
+    for source in record["source"]:
+        fields.append(("source", source, True))
+    fields.append(("class", record["class"], True))
+    fields.append(("taxon_level", record["taxon_level"], False))
+    fields.append(("status", record["status"], True))
+    fields.append(("diet", record.get("diet"), False))
+    for activity in split_values(record.get("activity")):
+        fields.append(("activity", activity, False))
+    fields.append(("domestication", record["domestication"], False))
+    fields.append(("danger_level", record.get("danger_level"), False))
+    fields.append(("as_pet", record.get("as_pet"), False))
+
+    return [field for field in fields if field[1]]
+
+
+def number_fields(record):
+    # numbers for range queries (lifespan_max:[50 TO *], authority_year:[1750 TO 1760]) -> [(field, value)]
+    fields = []
+    years = lifespan(record["lifespan"])
+    if years:
+        fields.append(("lifespan_min", years[0]))
+        fields.append(("lifespan_max", years[1]))
+    if record["authority_year"]:
+        fields.append(("authority_year", record["authority_year"]))
+    return fields
 
 
 
-def add_text(doc, field, value, stored=False):
-    from org.apache.lucene.document import Field, TextField
-
-    if value:
-        doc.add(TextField(field, value, Field.Store.YES if stored else Field.Store.NO))
-
-
-def add_texts(doc, field, values, stored=False):
-    for value in values or []:
-        add_text(doc, field, value, stored)
 
 
 def create_document(record):
-    # one animal -> one Lucene document
-    from org.apache.lucene.document import Document, DoubleField, Field, IntField, StoredField, StringField
+    # one record -> one Lucene document
+    from org.apache.lucene.document import Document, DoubleField, Field, IntField, StringField, TextField
 
     doc = Document()
-    wiki = record["wiki"]
-    strong = wiki is not None and wiki["match_type"] in STRONG_MATCHES
 
-    # identifier, exact value, not analyzed
+    # identifier, exact value, not analyzed (a-z slug or wiki-<page id>)
     doc.add(StringField("slug", record["id"], Field.Store.YES))
 
-    # names, the most important for search
-    add_text(doc, "name", record["name"], stored=True)
-    add_texts(doc, "also_known_as", record["also_known_as"])
-    add_text(doc, "scientific_name", record["scientific_name"], stored=True)
+    for field, value, stored in text_fields(record):
+        doc.add(TextField(field, value, Field.Store.YES if stored else Field.Store.NO))
 
-    # full text from a-z
-    add_text(doc, "summary", record["summary"])
-    add_texts(doc, "locations", record["locations"])
-    add_text(doc, "facts", record["cultural_significance"])
-    for field in FACT_FIELDS:
-        add_texts(doc, "facts", record[field])
-    for section in record["article"]:
-        add_text(doc, "article", " ".join(part for part in (section["heading"], section["text"]) if part))
-
-    # keyword fields for filters (class:aves AND status:cr)
-    add_text(doc, "class", record["class"], stored=True)
-    add_text(doc, "taxon_level", record["taxon_level"])
-    add_text(doc, "status", status_code(record), stored=True)
-    add_text(doc, "diet", record["diet"])
-    add_texts(doc, "activity", split_values(record["activity"]))
-    add_text(doc, "domestication", record["domestication"])
-    add_text(doc, "danger_level", record["danger_level"])
-    add_text(doc, "as_pet", record["as_pet"])
-
-    # numbers for range queries (lifespan_max:[50 TO *])
-    years = lifespan(record["lifespan_wild"])
-    if years:
-        doc.add(DoubleField("lifespan_min", years[0], Field.Store.YES))
-        doc.add(DoubleField("lifespan_max", years[1], Field.Store.YES))
-
-    if wiki is None:
-        add_text(doc, "wiki_match", "none")
-        return doc
-
-    # from wiki only the animal's own page is indexed, not Dog with its "Wolves" category for every breed
-    add_text(doc, "wiki_match", wiki["match_type"].replace("_", " "))
-    doc.add(StoredField("wiki_title", wiki["title"]))
-
-    if strong:
-        add_texts(doc, "wiki_categories", wiki["categories"])
-        add_texts(doc, "wiki_names", wiki_names(record))
-        add_text(doc, "wiki_lead", wiki["lead"])
-        add_text(doc, "origin", wiki["origin"])
-        if wiki["scientific_name"] and wiki["scientific_name"] != record["scientific_name"]:
-            add_text(doc, "scientific_name", wiki["scientific_name"])      # newer or older scientific name
-        if wiki["authority_year"]:
-            doc.add(IntField("authority_year", wiki["authority_year"], Field.Store.YES))
+    for field, value in number_fields(record):
+        if field in INT_FIELDS:
+            doc.add(IntField(field, int(value), Field.Store.YES))
+        else:
+            doc.add(DoubleField(field, float(value), Field.Store.YES))
 
     return doc
 
@@ -187,13 +126,12 @@ def create_document(record):
 
 
 
-def load_records():
-    records = []
+def read_records():
+    # records one by one, the joined file is too big to keep all of it in memory
     for path in sorted(config.ANIMALS_WIKI_DIR.glob("part-*")):
         with open(path, encoding="utf-8") as f:
             for line in f:
-                records.append(json.loads(line))
-    return records
+                yield json.loads(line)
 
 
 def folder_size(folder):
@@ -213,7 +151,6 @@ def build():
     from org.apache.lucene.index import IndexWriter, IndexWriterConfig
 
     start = time.time()
-    records = load_records()
 
     # new index every time
     if config.LUCENE_INDEX_DIR.exists():
@@ -223,13 +160,18 @@ def build():
     writer_config.setOpenMode(IndexWriterConfig.OpenMode.CREATE)
     writer = IndexWriter(open_directory(), writer_config)
 
-    for record in records:
+    sources = {}
+    for record in read_records():
         writer.addDocument(create_document(record))
+        label = "+".join(record["source"])
+        sources[label] = sources.get(label, 0) + 1
 
-    writer.forceMerge(1)        # one segment, the index is small and statistics are exact
+    writer.forceMerge(1)        # one segment, statistics are exact
     writer.close()
 
-    print(f"Indexed {len(records)} animals -> {config.LUCENE_INDEX_DIR}")
+    print(f"Indexed {sum(sources.values())} records -> {config.LUCENE_INDEX_DIR}")
+    for label, count in sorted(sources.items()):
+        print(f" {label + ':':<12}{count}")
     print(f"Index size: {human_size(folder_size(config.LUCENE_INDEX_DIR))}")
     print(f"Done in {time.time() - start:.1f} s")
 

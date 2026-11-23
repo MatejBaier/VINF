@@ -5,7 +5,7 @@ Semestrálny projekt z predmetu Vyhľadávanie informácií (FIIT STU, 2026/2027
 Vyhľadávač zvierat nad encyklopédiou [A-Z Animals](https://a-z-animals.com/animals/), ktorá je spojená s anglickou Wikipédiou.
 
 * **1. časť:** crawler, REGEX extraktor, vlastný TF index a vyhľadávanie s 5 metódami idf a 4 skórovacími funkciami
-* **2. časť:** extrakcia v Apache Spark, spracovanie Wikipedia dumpu regexmi, join s Wikipédiou, index v PyLucene a evaluácia
+* **2. časť:** extrakcia v Apache Spark, spracovanie Wikipedia dumpu regexmi (len zvieratá), full outer join s Wikipédiou, index v PyLucene a evaluácia
 
 ## Požiadavky
 
@@ -44,7 +44,7 @@ docker run --rm -it -v "$PWD":/project -w /project coady/pylucene python main.py
 | 10 až 13 | vlastný index a vyhľadávanie (1. časť) | venv |
 | 14 až 15 | Spark: extrakcia zvierat, porovnanie s 1. časťou | venv |
 | 16 až 18 | Spark: Wikipedia dump (vzorka, celý dump, ukážka záznamu) | venv |
-| 19 až 20 | Spark: join zvierat s Wikipédiou, ukážka záznamu | venv |
+| 19 až 20 | Spark: full outer join zvierat z A-Z Animals a z Wikipédie, ukážka záznamu | venv |
 | 21 až 25 | Lucene: index, štatistika, vyhľadávanie, typy dopytov, starý vs nový index | Docker |
 | 26 | evaluácia: starý index, Lucene, Google a vyhľadávanie na a-z-animals | Docker |
 | 27 | unit testy 2. časti (wiki extraktor, join, Lucene a evaluácia) | venv alebo Docker |
@@ -61,8 +61,10 @@ Priečinok `data/` nie je v gite, lebo má okolo 2 GB. Vzniká postupne pri spú
 | `extracted.jsonl` | extraktor (5) | jedno zviera na riadok |
 | `index/` | indexer (10) | vlastný index z 1. časti |
 | `raw_pages.jsonl`, `spark/animals/` | Spark (14) | ZIP prevedený pre Spark, extrahované zvieratá |
-| `spark/wiki_taxa/`, `spark/wiki_redirects/` | Spark (17) | články s taxonomickým alebo plemenným infoboxom, redirecty na ne |
-| `spark/animals_wiki/`, `join_unmatched.tsv` | Spark (19) | zvieratá s pripojenou Wikipédiou, nenapojené zvieratá |
+| `spark/wiki_taxa/`, `spark/wiki_redirects/` | Spark (17) | články o zvieratách (taxonomický alebo plemenný infobox), redirecty na ne |
+| `spark/wiki_taxonomy/` | Spark (17) | taxonomické šablóny (Template:Taxonomy/...), z nich sa zistí ríša a trieda |
+| `spark/animals_wiki/` | Spark (19) | full outer join: zvieratá z A-Z Animals spojené so svojou stránkou, ostatné zvieratá z A-Z a zvieratá len z Wikipédie, všetky s rovnakými poľami a poľom `source` |
+| `join_unmatched.tsv`, `join_duplicates.tsv` | Spark (19) | zvieratá z A-Z bez stránky na Wikipédii, zvieratá z Wikipédie s rovnakým menom ako zviera z A-Z (kontrola joinu) |
 | `lucene_index/` | Lucene (21) | index PyLucene |
 
 ## Štruktúra
@@ -77,17 +79,17 @@ modules/
   indexer.py, search.py                          vlastný index a vyhľadávanie (1. časť)
   spark_utils.py                                 Spark session (local[*])
   spark_animals.py                               extrakcia zvierat v Sparku
-  wiki_extractor.py                              REGEX extrakcia z wikitextu
+  wiki_extractor.py                              REGEX extrakcia z wikitextu, taxonomické šablóny a ríša/trieda zvieraťa
   spark_wiki.py                                  spracovanie Wikipedia dumpu v Sparku
-  spark_join.py                                  join zvierat s Wikipédiou
+  spark_join.py                                  full outer join zvierat s Wikipédiou, spojenie polí a konflikty
   lucene_utils.py, lucene_indexer.py             schéma a tvorba indexu PyLucene
   lucene_search.py                               vyhľadávanie v PyLucene
   evaluation.py                                  evaluácia (P@5, P@10, R@10, RR)
 tests/
   test_extractor.py, expected.json, unit_test_pages.zip    testy extraktora (1. časť)
-  test_wiki_extractor.py, wiki_test_pages.xml.bz2          testy wiki extraktora na 9 stránkach z dumpu
-  test_join.py                                             testy joinu
-  test_lucene_helpers.py                                   testy hodnôt indexu, regexov dopytu a metrík
+  test_wiki_extractor.py, wiki_test_pages.xml.bz2          testy wiki extraktora na 9 stránkach z dumpu, taxonomické šablóny
+  test_join.py                                             testy joinu, spojenia polí, konfliktov a full outer joinu
+  test_lucene_helpers.py                                   testy jednotných polí indexu, regexov dopytu a metrík
 evaluation/
   queries.json              11 dopytov a ručne určené relevantné zvieratá
   external_results.tsv      výsledky z Google a z vyhľadávania na a-z-animals (zapísané ručne)

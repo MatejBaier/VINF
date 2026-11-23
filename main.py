@@ -164,7 +164,7 @@ MENU = [
     ("16", "Spark - process wiki dump (sample)", spark_wiki_sample),
     ("17", "Spark - process wiki dump (full)", spark_wiki_full),
     ("18", "Spark - show wiki record", spark_wiki_show),
-    ("19", "Spark - join animals with wiki", spark_join_run),
+    ("19", "Spark - full outer join of animals and wiki", spark_join_run),
     ("20", "Spark - show joined record", spark_join_show),
     (None, "", None),
     ("21", "Lucene - build index", lucene_build),

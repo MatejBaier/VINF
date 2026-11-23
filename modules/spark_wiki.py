@@ -3,7 +3,8 @@ import shutil
 import time
 
 import config
-from modules.wiki_extractor import ARTICLE_NAMESPACE, extract, parse_xml_page
+from modules.wiki_extractor import (ARTICLE_NAMESPACE, add_lineage, extract, extract_taxonomy, is_animal, is_taxonomy_page, parse_xml_page,
+                                    templates_by_name)
 
 
 
@@ -12,13 +13,16 @@ from modules.wiki_extractor import ARTICLE_NAMESPACE, extract, parse_xml_page
 # functions below run on executors, every executor processes its own part of the dump
 
 def process_page(record):
-    # one <page> -> (kind, value), kind is "taxon", "redirect", "article" or "other"
+    # one <page> -> (kind, value), kind is "taxon", "taxonomy", "redirect", "article" or "other"
     page = parse_xml_page(record)
     if page is None:
         return None             # end of the file, not a page
 
+    if is_taxonomy_page(page):
+        return ("taxonomy", extract_taxonomy(page))         # Template:Taxonomy/Vulpes, rank and parent of a taxon
+
     if page["namespace"] != ARTICLE_NAMESPACE:
-        return ("other", None)          # talk pages, templates, files ...
+        return ("other", None)          # talk pages, other templates, files ...
 
     if page["redirect"]:
         return ("redirect", (page["title"], page["redirect"]))
@@ -35,6 +39,10 @@ def is_page(result):
 
 def is_taxon(result):
     return result[0] == "taxon"
+
+
+def is_taxonomy(result):
+    return result[0] == "taxonomy"
 
 
 def is_redirect(result):
@@ -75,20 +83,31 @@ def save(rdd, folder):
     rdd.map(to_json_line).saveAsTextFile(str(folder))
 
 
-def print_run_summary(kinds, infoboxes, taxa_count, redirect_count, seconds):
+def print_counts(title, counts, top=None):
+    print(f"\n{title}")
+    ordered = sorted(counts.items(), key=lambda item: item[1], reverse=True)
+    for name, count in ordered[:top]:
+        print(f" {name + ':':<30}{count}")
+    if top and len(ordered) > top:
+        print(f" {'other (' + str(len(ordered) - top) + '):':<30}{sum(count for name, count in ordered[top:])}")
+
+
+def print_run_summary(kinds, kingdoms, infoboxes, classes, taxa_count, redirect_count, seconds):
     print("\nPages in the dump")
     print(f" {'all pages:':<26}{sum(kinds.values())}")
     print(f" {'other namespaces:':<26}{kinds.get('other', 0)}")
+    print(f" {'taxonomy templates:':<26}{kinds.get('taxonomy', 0)}")
     print(f" {'redirects:':<26}{kinds.get('redirect', 0)}")
     print(f" {'other articles:':<26}{kinds.get('article', 0)}")
     print(f" {'taxon and breed articles:':<26}{kinds.get('taxon', 0)}")
 
-    print("\nTaxon and breed articles by infobox")
-    for infobox, count in sorted(infoboxes.items(), key=lambda item: item[1], reverse=True):
-        print(f" {infobox + ':':<30}{count}")
+    print_counts("Taxon and breed articles by kingdom", kingdoms, top=8)
+    print_counts("Animals by infobox", infoboxes)
+    print_counts("Animals by class", classes, top=15)
 
-    print(f"\nSaved {taxa_count} taxa and breeds -> {config.WIKI_TAXA_DIR}")
+    print(f"\nSaved {taxa_count} animals -> {config.WIKI_TAXA_DIR}")
     print(f"Saved {redirect_count} redirects to them -> {config.WIKI_REDIRECTS_DIR}")
+    print(f"Saved {kinds.get('taxonomy', 0)} taxonomy templates -> {config.WIKI_TAXONOMY_DIR}")
     print(f"\nDone in {seconds / 60:.1f} min")
 
 
@@ -117,22 +136,33 @@ def run(full=False):
 
     kinds = results.map(result_kind).countByValue()
 
-    taxa = results.filter(is_taxon).map(result_value)
-    save(taxa, config.WIKI_TAXA_DIR)
-    infoboxes = taxa.map(lambda taxon: taxon["infobox"]).countByValue()
+    # taxonomy templates are small, every executor gets all of them and finds the lineage of its taxa without a shuffle
+    templates = results.filter(is_taxonomy).map(result_value)
+    save(templates, config.WIKI_TAXONOMY_DIR)
+    lookup = sc.broadcast(templates_by_name(templates.collect()))
 
-    # only redirects pointing to a taxon page are kept, join: (target, title) x (taxon title, True)
+    taxa = results.filter(is_taxon).map(result_value).map(lambda taxon: add_lineage(taxon, lookup.value))
+    taxa = taxa.persist(StorageLevel.MEMORY_AND_DISK)
+    kingdoms = taxa.map(lambda taxon: taxon["kingdom"] or "unknown").countByValue()
+
+    # only animals are kept, plants, fungi ... and taxa without a known lineage are left out
+    animals = taxa.filter(is_animal)
+    save(animals, config.WIKI_TAXA_DIR)
+    infoboxes = animals.map(lambda taxon: taxon["infobox"]).countByValue()
+    classes = animals.map(lambda taxon: taxon["class"] or "unknown").countByValue()
+
+    # only redirects pointing to an animal page are kept, join: (target, title) x (animal title, True)
     redirects = results.filter(is_redirect).map(result_value)
     redirects_by_target = redirects.map(lambda redirect: (redirect[1], redirect[0]))
-    taxa_titles = taxa.map(lambda taxon: (taxon["title"], True))
-    taxa_redirects = redirects_by_target.join(taxa_titles).map(lambda pair: {"title": pair[1][0], "target": pair[0]})
-    save(taxa_redirects, config.WIKI_REDIRECTS_DIR)
+    animal_titles = animals.map(lambda taxon: (taxon["title"], True))
+    animal_redirects = redirects_by_target.join(animal_titles).map(lambda pair: {"title": pair[1][0], "target": pair[0]})
+    save(animal_redirects, config.WIKI_REDIRECTS_DIR)
 
-    taxa_count = taxa.count()
-    redirect_count = taxa_redirects.count()
+    animal_count = animals.count()
+    redirect_count = animal_redirects.count()
 
     spark.stop()
-    print_run_summary(kinds, infoboxes, taxa_count, redirect_count, time.time() - start)
+    print_run_summary(kinds, kingdoms, infoboxes, classes, animal_count, redirect_count, time.time() - start)
 
 
 

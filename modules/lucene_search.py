@@ -3,6 +3,7 @@ import time
 
 import config
 from modules.lucene_utils import DOUBLE_FIELDS, INT_FIELDS, KEYWORD_FIELDS, create_analyzer, init_lucene, open_directory
+from modules.spark_join import SOURCE_AZ
 
 
 
@@ -31,7 +32,10 @@ QUERY_EXAMPLES = [
     ("Status from wiki (fossils)", "locations:slovakia AND status:ex"),
     ("Filter + range", "class:mammalia AND lifespan_max:[50 TO *]"),
     ("Wiki redirect (old name)", '"Alopex lagopus"'),
-    ("Wiki category", 'wiki_categories:"mammals of africa" AND status:(vu OR en OR cr)'),
+    ("Wiki category", 'categories:"mammals of africa" AND status:(vu OR en OR cr)'),
+    ("Source - only a-z records", "source:az AND name:lion"),
+    ("Source - only wiki records", "source:wiki AND NOT source:az AND class:mammalia AND status:cr"),
+    ("One name, more records (join check)", "name:lion"),
 ]
 
 HELP = f"""
@@ -42,6 +46,7 @@ Query syntax
  fuzzy / wildcard       elefant~   octo*
  field                  name:fox   class:aves   status:cr   diet:herbivore   as_pet:"suitable as pet"
  range (numbers)        authority_year:[1750 TO 1800]   lifespan_max:[50 TO *]
+ source                 source:az (a-z records)   source:wiki (wiki records)   source:wiki NOT source:az (only wiki)
 
 Searched without field name: {", ".join(config.LUCENE_FIELD_BOOSTS)}
 Keyword fields: {", ".join(KEYWORD_FIELDS)}
@@ -77,6 +82,17 @@ def create_parser(operator):
 def create_parsers():
     # (AND parser, OR parser), words without operator are first joined by AND, then by OR
     return create_parser("AND"), create_parser("OR")
+
+
+def filter_source(query, source):
+    # only records with this source (source:az in the evaluation), a filter does not change the score
+    from org.apache.lucene.index import Term
+    from org.apache.lucene.search import BooleanClause, BooleanQuery, TermQuery
+
+    builder = BooleanQuery.Builder()
+    builder.add(query, BooleanClause.Occur.MUST)
+    builder.add(TermQuery(Term("source", source)), BooleanClause.Occur.FILTER)
+    return builder.build()
 
 
 def range_query(field, low, high):
@@ -137,17 +153,20 @@ def run_query(query, searcher, top_k, all_words):
             "name": doc.get("name"),
             "class": doc.get("class"),
             "status": doc.get("status"),
-            "wiki_title": doc.get("wiki_title"),
+            "source": "+".join(str(source) for source in doc.getValues("source")),
             "all_words": all_words,
         })
     return results, hit_count(top.totalHits)
 
 
-def search(text, searcher, parsers, top_k=config.TOP_K):
+def search(text, searcher, parsers, top_k=config.TOP_K, source=None):
     # AND query first (all words), the rest of top_k is filled by the OR query, returns (results, AND hits, ms)
     and_parser, or_parser = parsers
     and_query = parse_query(text, and_parser)
     or_query = parse_query(text, or_parser)
+    if source:
+        and_query = filter_source(and_query, source)
+        or_query = filter_source(or_query, source)
 
     start = time.perf_counter()
     results, total = run_query(and_query, searcher, top_k, all_words=True)
@@ -179,7 +198,7 @@ def print_results(results, total, milliseconds):
     print(f" {total} hits with all words, {milliseconds:.1f} ms")
     for rank, result in enumerate(results, 1):
         mark = " " if result["all_words"] else "~"          # ~ = found only by some of the words
-        print(f" {rank:>2}.{mark}{result['score']:7.3f}  {result['name'][:31]:<32}{result['class'] or '':<16}{result['status']:<4}{result['slug']}")
+        print(f" {rank:>2}.{mark}{result['score']:7.3f}  {result['name'][:31]:<32}{result['class'] or '':<16}{result['status']:<4}{result['source']:<9}{result['slug']}")
 
 
 def prepare():
@@ -259,13 +278,13 @@ def compare():
         old_milliseconds = (time.perf_counter() - start) * 1000
 
         try:
-            new_results, total, new_milliseconds = search(text, searcher, parsers)
+            new_results, total, new_milliseconds = search(text, searcher, parsers, source=SOURCE_AZ)     # the old index has only a-z
         except Exception as error:
             print(f" wrong query: {error_message(error)}")
             continue
 
         old_label = f"old index ({config.OLD_SCORING} / {config.OLD_IDF})"
-        print(f"\n {'':4}{old_label:<36}{'Lucene':<36}")
+        print(f"\n {'':4}{old_label:<36}{'Lucene (source:az)':<36}")
         print(f" {'':4}{f'{old_milliseconds:.1f} ms':<36}{f'{new_milliseconds:.1f} ms, {total} hits':<36}")
 
         for rank in range(config.TOP_K):

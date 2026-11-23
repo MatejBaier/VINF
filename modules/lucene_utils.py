@@ -6,6 +6,7 @@ import config
 
 # short fields with a few possible values, the whole value is one term, only lowercase (as_pet:"suitable as pet", status:cr)
 KEYWORD_FIELDS = [
+    "source",
     "class",
     "taxon_level",
     "status",
@@ -14,11 +15,10 @@ KEYWORD_FIELDS = [
     "domestication",
     "danger_level",
     "as_pet",
-    "wiki_match",
 ]
 
 # names are not stemmed, fuzzy and wildcard queries compare whole words (elefant~ -> elephant)
-NAME_FIELDS = ["name", "also_known_as", "wiki_names", "scientific_name"]
+NAME_FIELDS = ["name", "also_known_as", "scientific_name"]
 
 # numeric fields, used in range queries, value type for the query parser
 INT_FIELDS = ["authority_year"]
