@@ -1,0 +1,98 @@
+{
+  "queries": [
+    {
+      "id": "Q1",
+      "need": "One animal by its common name",
+      "text": "arctic fox",
+      "lucene": null,
+      "relevant": ["arctic-fox"]
+    },
+    {
+      "id": "Q2",
+      "need": "One animal by its old scientific name (synonym), the name is only on Wikipedia",
+      "text": "Phoca rosmarus",
+      "lucene": null,
+      "relevant": ["walrus"]
+    },
+    {
+      "id": "Q3",
+      "need": "The largest land snail in the world",
+      "text": "largest land snail",
+      "lucene": null,
+      "relevant": ["giant-african-land-snail"]
+    },
+    {
+      "id": "Q4",
+      "need": "The fastest land animals",
+      "text": "fastest land animal",
+      "lucene": "\"fastest land animal\"",
+      "relevant": ["cheetah", "pronghorn"]
+    },
+    {
+      "id": "Q5",
+      "need": "Glowing (bioluminescent) animals of the deep sea",
+      "text": "glowing deep sea creature",
+      "lucene": "(glowing OR bioluminescent) AND \"deep sea\"",
+      "relevant": [
+        "anglerfish", "football-fish", "dragonfish", "vampire-squid", "cookiecutter-shark", "stoplight-loosejaw",
+        "viperfish", "gulper-eel", "giant-siphonophore", "pygmy-shark", "kitefin-shark", "colossal-squid"
+      ]
+    },
+    {
+      "id": "Q6",
+      "need": "Intelligent animals which use tools",
+      "text": "smartest animal uses tools",
+      "lucene": "\"tool use\" OR \"uses tools\" OR \"using tools\"",
+      "relevant": [
+        "hawaiian-crow", "kea", "crow", "cockatoo", "egyptian-vulture", "green-heron",
+        "orangutan", "sumatran-orangutan", "tapanuli-orangutan", "bornean-orangutan", "chimpanzee", "bonobo",
+        "gorilla", "western-gorilla", "capuchin-monkey", "white-faced-capuchin", "crab-eating-macaque",
+        "human", "neanderthal", "australopithecus", "elephant", "african-bush-elephant", "asian-elephant",
+        "sea-otter", "octopus"
+      ]
+    },
+    {
+      "id": "Q7",
+      "need": "Large carnivores (order Carnivora) living in the mountains of Slovakia",
+      "text": "large carnivore slovakia mountains",
+      "lucene": "locations:slovakia AND (carnivora OR carnivore) AND mountains",
+      "relevant": ["brown-bear", "bear", "wolf", "eurasian-wolf", "lynx", "eurasian-lynx"]
+    },
+    {
+      "id": "Q8",
+      "need": "Venomous animals suitable as pets",
+      "text": "venomous suitable pet",
+      "lucene": "venomous AND as_pet:\"suitable as pet\" NOT nonvenomous NOT \"non venomous\"",
+      "relevant": [
+        "brazilian-black-tarantula", "chilean-rose-tarantula", "pink-toed-tarantula", "zebra-tarantula", "gooty-sapphire-tarantula",
+        "green-bottle-blue-tarantula", "cobalt-blue-tarantula", "black-tarantula", "pumpkin-patch-tarantula", "curly-hair-tarantula",
+        "tarantula", "texas-brown-tarantula-2", "red-knee-tarantula", "california-tarantula", "skeleton-tarantula",
+        "purple-tarantula", "mexican-fireleg-tarantula", "arizona-blonde-tarantula",
+        "spider", "southern-house-spider", "garden-spider", "wolf-spider", "regal-jumping-spider", "jumping-spider", "barn-spider",
+        "cane-spider", "giant-house-spider", "common-house-spider", "writing-spider", "trapdoor-spider", "clock-spider",
+        "scorpion", "lionfish", "false-water-cobra", "vine-snake", "io-moth"
+      ]
+    },
+    {
+      "id": "Q9",
+      "need": "Extinct animals which lived in Slovakia",
+      "text": "slovakia extinct animals",
+      "lucene": "locations:slovakia AND status:ex",
+      "relevant": ["aurochs", "woolly-rhinoceros", "cave-bear", "cave-lion", "neanderthal", "cervalces-latifrons-broad-fronted-moose"]
+    },
+    {
+      "id": "Q10",
+      "need": "Critically endangered birds",
+      "text": "critically endangered bird",
+      "lucene": "class:aves AND status:cr",
+      "relevant": ["california-condor", "kakapo", "ivory-billed-woodpecker", "red-headed-vulture", "hawaiian-crow", "african-penguin"]
+    },
+    {
+      "id": "Q11",
+      "need": "Dog breeds from Slovakia",
+      "text": "dog breed from slovakia",
+      "lucene": "(slovakia OR slovak OR czechoslovakia) AND (dog OR wolfdog) AND domestication:domesticated",
+      "relevant": ["slovak-cuvac", "czechoslovakian-wolfdog"]
+    }
+  ]
+}

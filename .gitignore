@@ -37,3 +37,6 @@ lucene_index/
 # Logs and temporary files
 *.log
 *.tmp
+
+# test pages from the Wikipedia dump are small and needed by the unit tests
+!tests/wiki_test_pages.xml.bz2

@@ -14,6 +14,23 @@ BRACKETS_REGEX = re.compile(r"\([^)]*\)")           # Owlfly (Ascalaphidae) -> O
 NOT_WORD_REGEX = re.compile(r"[^a-z0-9' ]+")
 SPACES_REGEX = re.compile(r"\s+")
 GENERIC_WORD_REGEX = re.compile(r" (dog|cat|chicken|goat|cattle|rabbit|horse|pig|sheep|fish)$")      # "basenji dog" -> "basenji"
+BREED_KIND_REGEX = re.compile(r"^Infobox (.+) breed$")         # "Infobox dog breed" -> "dog"
+
+# breed infobox -> genera of animals which can get this breed page, Abyssinian cat is not the horse "Abyssinian"
+BREED_GENERA = {
+    "dog": {"canis"},
+    "cat": {"felis"},
+    "horse": {"equus"},
+    "cattle": {"bos"},
+    "cow": {"bos"},
+    "water buffalo": {"bubalus"},
+    "sheep": {"ovis"},
+    "goat": {"capra"},
+    "pig": {"sus"},
+    "poultry": {"gallus", "anas", "anser", "meleagris", "numida", "coturnix", "cairina"},
+    "pigeon": {"columba"},
+    "goldfish": {"carassius"},
+}
 
 # match types from the best to the worst, lower number wins
 MATCH_LEVELS = {
@@ -117,8 +134,10 @@ def add_redirects(pair):
 
 def name_confirmed(name_key, scientific_words, shared, taxon):
     # protection against same names: Chinook dog vs Chinook salmon, the genus must appear in the wiki page
-    if not shared and taxon["scientific_name"] is None and normalize(taxon["title"]) == name_key:
-        return True             # group or hybrid page without scientific name and with exactly the same title, Squid -> Squid
+    if not shared and taxon["scientific_name"] is None:
+        titles = [normalize(title) for title in [taxon["title"]] + taxon["redirects"]]
+        if name_key in titles:
+            return True         # group or hybrid page without scientific name, exactly the same title or redirect, Squid -> Squid, Zorse -> Zebroid
 
     genus_key, epithet = scientific_words
     if not genus_key:
@@ -153,11 +172,37 @@ def match_type(found, animal_id, lookup):
     return None
 
 
+def breed_genus_matches(taxon, scientific_words):
+    # the genus of the animal must fit the breed infobox, "Infobox animal breed" fits every animal
+    kind = BREED_KIND_REGEX.match(taxon["infobox"])
+    if not kind:
+        return True
+
+    genera = BREED_GENERA.get(kind.group(1).lower())
+    if genera is None:
+        return True
+    return scientific_words[0] in genera
+
+
+def breed_title_matches(taxon, name_key):
+    # the breed name is the page title itself, "Abyssinian cat" counts for "abyssinian"
+    title_key = normalize(taxon["title"])
+    return name_key == title_key or name_key == GENERIC_WORD_REGEX.sub("", title_key)
+
+
 def find_candidates(taxon, lookup):
     # one taxon -> list of (animal id, (level, page id, match type)) for animals it matches
     wiki_keys = [(normalize(taxon["scientific_name"]), "scientific_name"), (normalize(taxon["title"]), "title")]
     for redirect in taxon["redirects"]:
         wiki_keys.append((normalize(redirect), "title"))        # redirect is another title of the same page
+
+    if is_breed(taxon):
+        # breed page "Abyssinian cat" is also found as "abyssinian", a-z has only "Abyssinian"
+        for wiki_key, wiki_field in list(wiki_keys):
+            if wiki_field == "title" and wiki_key:
+                short_key = GENERIC_WORD_REGEX.sub("", wiki_key)
+                if short_key != wiki_key:
+                    wiki_keys.append((short_key, "title"))
 
     found = {}          # animal id -> set of (animal key type, wiki field)
     for wiki_key, wiki_field in wiki_keys:
@@ -168,8 +213,13 @@ def find_candidates(taxon, lookup):
     for animal_id, pairs in found.items():
         if is_breed(taxon):
             # breed page only for animals sharing the scientific name, Chinook dog -> Chinook (dog), not Chinook salmon
-            if animal_id in lookup["shared"] and ("name", "title") in pairs:
-                candidates.append((animal_id, (MATCH_LEVELS["breed_name"], taxon["page_id"], "breed_name")))
+            if animal_id not in lookup["shared"] or ("name", "title") not in pairs:
+                continue
+            if breed_genus_matches(taxon, lookup["scientific_words"][animal_id]):
+                level = MATCH_LEVELS["breed_name"]
+                if not breed_title_matches(taxon, lookup["names"][animal_id]):
+                    level += 0.5        # only a redirect has the name, Pointer -> "Pointer (dog breed)", not "Pointer (German Shorthaired)"
+                candidates.append((animal_id, (level, taxon["page_id"], "breed_name")))
             continue
 
         found_type = match_type(pairs, animal_id, lookup)
@@ -184,8 +234,16 @@ def find_candidates(taxon, lookup):
                 found_type = "name"
 
         if found_type:
-            candidates.append((animal_id, (MATCH_LEVELS[found_type], taxon["page_id"], found_type)))
+            candidates.append((animal_id, (match_level(found_type, taxon), taxon["page_id"], found_type)))
     return candidates
+
+
+def match_level(found_type, taxon):
+    # the closest parent wins: species "Crotalus molossus" (7.33) before genus "Crotalus" (7.5)
+    level = MATCH_LEVELS[found_type]
+    if found_type == "parent_taxon":
+        level += 1 / (1 + len(normalize(taxon["scientific_name"]).split()))
+    return level
 
 
 def is_breed(taxon):

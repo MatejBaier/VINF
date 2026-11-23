@@ -127,3 +127,15 @@ LUCENE_FIELD_BOOSTS = {
     "article": 1.0,
     "wiki_lead": 1.0,
 }
+
+# old index (part 1) in comparisons, the best combination from part 1
+OLD_SCORING = "spread"
+OLD_IDF = "standard"
+
+
+# evaluation
+EVALUATION_DIR = PROJECT_DIR / "evaluation"
+EVALUATION_QUERIES_FILE = EVALUATION_DIR / "queries.json"               # queries and relevant animals (judged by hand)
+EVALUATION_EXTERNAL_FILE = EVALUATION_DIR / "external_results.tsv"      # results of Google and a-z-animals search, written by hand
+EVALUATION_RESULTS_FILE = EVALUATION_DIR / "results.txt"                # output of the evaluation, text tables for the wiki
+EVALUATION_TOP_K = 10

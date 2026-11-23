@@ -25,8 +25,10 @@ QUERY_EXAMPLES = [
     ("Fuzzy (typo)", "name:elefant~"),
     ("Wildcard", "octo*"),
     ("Range - year of description", "authority_year:[1750 TO 1760]"),
-    ("Range - lifespan", "lifespan_max:[100 TO *]"),
+    ("Range - lifespan", "class:reptilia AND lifespan_max:[100 TO *]"),
     ("Keyword filter", "class:aves AND status:cr"),
+    ("Keyword filter (whole value)", 'venomous AND as_pet:"suitable as pet"'),
+    ("Status from wiki (fossils)", "locations:slovakia AND status:ex"),
     ("Filter + range", "class:mammalia AND lifespan_max:[50 TO *]"),
     ("Wiki redirect (old name)", '"Alopex lagopus"'),
     ("Wiki category", 'wiki_categories:"mammals of africa" AND status:(vu OR en OR cr)'),
@@ -34,11 +36,11 @@ QUERY_EXAMPLES = [
 
 HELP = f"""
 Query syntax
- words                  fox arctic                       (OR between words)
+ words                  fox arctic                       (AND between words, then filled by OR)
  Boolean                fox AND arctic, python NOT ball, (lion OR tiger) AND white
  phrase                 "apex predator"
  fuzzy / wildcard       elefant~   octo*
- field                  name:fox   class:aves   status:cr   diet:herbivore
+ field                  name:fox   class:aves   status:cr   diet:herbivore   as_pet:"suitable as pet"
  range (numbers)        authority_year:[1750 TO 1800]   lifespan_max:[50 TO *]
 
 Searched without field name: {", ".join(config.LUCENE_FIELD_BOOSTS)}
@@ -56,17 +58,25 @@ def open_searcher():
     return IndexSearcher(DirectoryReader.open(open_directory()))
 
 
-def create_parser():
+def create_parser(operator):
     # words without field name are searched in more fields, every field has its boost from config
     from java.lang import Float
     from java.util import HashMap
-    from org.apache.lucene.queryparser.classic import MultiFieldQueryParser
+    from org.apache.lucene.queryparser.classic import MultiFieldQueryParser, QueryParser
 
     boosts = HashMap()
     for field, boost in config.LUCENE_FIELD_BOOSTS.items():
         boosts.put(field, Float(boost))
 
-    return MultiFieldQueryParser(list(config.LUCENE_FIELD_BOOSTS), create_analyzer(), boosts)
+    parser = MultiFieldQueryParser(list(config.LUCENE_FIELD_BOOSTS), create_analyzer(), boosts)
+    if operator == "AND":
+        parser.setDefaultOperator(QueryParser.Operator.AND)
+    return parser
+
+
+def create_parsers():
+    # (AND parser, OR parser), words without operator are first joined by AND, then by OR
+    return create_parser("AND"), create_parser("OR")
 
 
 def range_query(field, low, high):
@@ -114,15 +124,10 @@ def parse_query(text, parser):
     return builder.build()
 
 
-def search(text, searcher, parser, top_k=config.TOP_K):
-    # returns (results, number of all hits, time in ms)
-    query = parse_query(text, parser)
-
-    start = time.perf_counter()
+def run_query(query, searcher, top_k, all_words):
     top = searcher.search(query, top_k)
-    milliseconds = (time.perf_counter() - start) * 1000
-
     stored_fields = searcher.storedFields()
+
     results = []
     for score_doc in top.scoreDocs:
         doc = stored_fields.document(score_doc.doc)
@@ -133,9 +138,28 @@ def search(text, searcher, parser, top_k=config.TOP_K):
             "class": doc.get("class"),
             "status": doc.get("status"),
             "wiki_title": doc.get("wiki_title"),
+            "all_words": all_words,
         })
+    return results, hit_count(top.totalHits)
 
-    return results, hit_count(top.totalHits), milliseconds
+
+def search(text, searcher, parsers, top_k=config.TOP_K):
+    # AND query first (all words), the rest of top_k is filled by the OR query, returns (results, AND hits, ms)
+    and_parser, or_parser = parsers
+    and_query = parse_query(text, and_parser)
+    or_query = parse_query(text, or_parser)
+
+    start = time.perf_counter()
+    results, total = run_query(and_query, searcher, top_k, all_words=True)
+    if len(results) < top_k:
+        found = {result["slug"] for result in results}
+        or_results, or_total = run_query(or_query, searcher, top_k, all_words=False)
+        for result in or_results:
+            if result["slug"] not in found and len(results) < top_k:
+                results.append(result)
+    milliseconds = (time.perf_counter() - start) * 1000
+
+    return results, total, milliseconds
 
 
 def hit_count(total_hits):
@@ -152,9 +176,10 @@ def error_message(error):
 
 
 def print_results(results, total, milliseconds):
-    print(f" {total} hits, {milliseconds:.1f} ms")
+    print(f" {total} hits with all words, {milliseconds:.1f} ms")
     for rank, result in enumerate(results, 1):
-        print(f" {rank:>2}. {result['score']:7.3f}  {result['name']:<32}{result['class'] or '':<16}{result['status']:<4}{result['slug']}")
+        mark = " " if result["all_words"] else "~"          # ~ = found only by some of the words
+        print(f" {rank:>2}.{mark}{result['score']:7.3f}  {result['name'][:31]:<32}{result['class'] or '':<16}{result['status']:<4}{result['slug']}")
 
 
 def prepare():
@@ -164,7 +189,7 @@ def prepare():
         return None
     if not init_lucene():
         return None
-    return open_searcher(), create_parser()
+    return open_searcher(), create_parsers()
 
 
 
@@ -174,7 +199,7 @@ def run():
     prepared = prepare()
     if prepared is None:
         return
-    searcher, parser = prepared
+    searcher, parsers = prepared
 
     print(HELP)
     while True:
@@ -183,7 +208,7 @@ def run():
             return
 
         try:
-            results, total, milliseconds = search(text, searcher, parser)
+            results, total, milliseconds = search(text, searcher, parsers)
         except Exception as error:
             print(f" wrong query: {error_message(error)}")
             continue
@@ -199,10 +224,10 @@ def examples():
     prepared = prepare()
     if prepared is None:
         return
-    searcher, parser = prepared
+    searcher, parsers = prepared
 
     for label, text in QUERY_EXAMPLES:
-        results, total, milliseconds = search(text, searcher, parser, top_k=5)
+        results, total, milliseconds = search(text, searcher, parsers, top_k=5)
 
         print(f"\n{label}:  {text}")
         if not results:
@@ -218,7 +243,7 @@ def compare():
     prepared = prepare()
     if prepared is None:
         return
-    searcher, parser = prepared
+    searcher, parsers = prepared
 
     old_index = old_search.load_index()
     if old_index is None:
@@ -230,16 +255,17 @@ def compare():
             return
 
         start = time.perf_counter()
-        old_results = old_search.search(text, old_index)
+        old_results = old_search.search(text, old_index, config.OLD_SCORING, config.OLD_IDF)
         old_milliseconds = (time.perf_counter() - start) * 1000
 
         try:
-            new_results, total, new_milliseconds = search(text, searcher, parser)
+            new_results, total, new_milliseconds = search(text, searcher, parsers)
         except Exception as error:
             print(f" wrong query: {error_message(error)}")
             continue
 
-        print(f"\n {'':4}{'old index (tf-idf)':<36}{'Lucene':<36}")
+        old_label = f"old index ({config.OLD_SCORING} / {config.OLD_IDF})"
+        print(f"\n {'':4}{old_label:<36}{'Lucene':<36}")
         print(f" {'':4}{f'{old_milliseconds:.1f} ms':<36}{f'{new_milliseconds:.1f} ms, {total} hits':<36}")
 
         for rank in range(config.TOP_K):
@@ -247,4 +273,4 @@ def compare():
             new_name = new_results[rank]["name"] if rank < len(new_results) else ""
             if not old_name and not new_name:
                 break
-            print(f" {rank + 1:>2}. {old_name:<36}{new_name:<36}")
+            print(f" {rank + 1:>2}. {old_name[:35]:<36}{new_name[:35]:<36}")

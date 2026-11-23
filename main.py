@@ -130,6 +130,17 @@ def lucene_compare():
     lucene_search.compare()
 
 
+def evaluation_run():
+    from modules import evaluation
+    evaluation.run()
+
+
+def part2_tests():
+    import unittest
+    tests = unittest.defaultTestLoader.loadTestsFromNames(["tests.test_wiki_extractor", "tests.test_join", "tests.test_lucene_helpers"])
+    unittest.TextTestRunner(verbosity=2).run(tests)
+
+
 MENU = [
     ("1", "Crawler - test run (5 pages)", crawl_test),
     ("2", "Crawler - full run / resume", crawl_full),
@@ -161,6 +172,9 @@ MENU = [
     ("23", "Lucene - search", lucene_search),
     ("24", "Lucene - query type examples", lucene_examples),
     ("25", "Lucene - compare old vs new index", lucene_compare),
+    (None, "", None),
+    ("26", "Evaluation - old index vs Lucene vs Google / a-z", evaluation_run),
+    ("27", "Unit tests - wiki extractor, join, Lucene helpers", part2_tests),
 ]
 
 HANDLERS = {}

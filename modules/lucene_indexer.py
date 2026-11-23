@@ -40,19 +40,35 @@ FACT_FIELDS = [
 
 LIFESPAN_REGEX = re.compile(r"([\d.]+)(?:\s*–\s*([\d.]+))?\s*years")       # "10–33 years" -> 10, 33
 
+# wiki categories of extinct animals, "Extant Pleistocene first appearances" does not match
+EXTINCT_CATEGORY_REGEX = re.compile(r"\bextinct\b|\bextinctions\b|\bfossil taxa\b|\bprehistoric\b", re.IGNORECASE)
 
 
+
+
+
+def is_fossil(wiki):
+    # prehistoric animals have no IUCN status in wiki, but their categories say it (Pleistocene extinctions, Fossil taxa described in 1794)
+    for category in wiki["categories"]:
+        if EXTINCT_CATEGORY_REGEX.search(category):
+            return True
+    return False
 
 
 def status_code(record):
-    # a-z status, if it is not evaluated, the IUCN status from wiki is used
+    # a-z status, if it is not evaluated, the IUCN status from wiki is used, prehistoric animals get EX
     code = STATUS_CODES.get(record["status"], "NE")
     wiki = record["wiki"]
 
-    if code == "NE" and wiki and wiki["status"] in IUCN_CODES:
+    if code != "NE" or wiki is None or wiki["match_type"] not in STRONG_MATCHES:
+        return code
+
+    if wiki["status"] in IUCN_CODES:
         system = wiki["status_system"] or "IUCN"
         if system.upper().startswith("IUCN"):
             return wiki["status"]
+    if wiki["status"] is None and is_fossil(wiki):
+        return "EX"
     return code
 
 

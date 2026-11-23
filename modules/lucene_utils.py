@@ -4,7 +4,7 @@ import config
 
 
 
-# short fields with a few possible values, only lowercase, no stemming and no stop words
+# short fields with a few possible values, the whole value is one term, only lowercase (as_pet:"suitable as pet", status:cr)
 KEYWORD_FIELDS = [
     "class",
     "taxon_level",
@@ -50,10 +50,20 @@ def init_lucene():
     return True
 
 
-def create_analyzer():
-    # English analyzer (lowercase, stop words, stemming foxes -> fox) for text, standard for names, simple for keywords
+def create_keyword_analyzer():
+    # the whole value is one lowercase term, "Not Suitable as Pet" -> "not suitable as pet", so it is not found by "suitable as pet"
     from java.util import HashMap
-    from org.apache.lucene.analysis.core import SimpleAnalyzer
+    from org.apache.lucene.analysis.custom import CustomAnalyzer
+
+    builder = CustomAnalyzer.builder()
+    builder.withTokenizer("keyword", HashMap())         # Map overloads, PyLucene does not need Java varargs then
+    builder.addTokenFilter("lowercase", HashMap())
+    return builder.build()
+
+
+def create_analyzer():
+    # English analyzer (lowercase, stop words, stemming foxes -> fox) for text, standard for names, keyword for categories
+    from java.util import HashMap
     from org.apache.lucene.analysis.en import EnglishAnalyzer
     from org.apache.lucene.analysis.miscellaneous import PerFieldAnalyzerWrapper
     from org.apache.lucene.analysis.standard import StandardAnalyzer
@@ -61,8 +71,10 @@ def create_analyzer():
     field_analyzers = HashMap()
     for field in NAME_FIELDS:
         field_analyzers.put(field, StandardAnalyzer())
+
+    keyword_analyzer = create_keyword_analyzer()
     for field in KEYWORD_FIELDS:
-        field_analyzers.put(field, SimpleAnalyzer())
+        field_analyzers.put(field, keyword_analyzer)
 
     return PerFieldAnalyzerWrapper(EnglishAnalyzer(), field_analyzers)
 

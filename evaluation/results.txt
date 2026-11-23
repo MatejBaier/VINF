@@ -1,0 +1,312 @@
+Summary (average over 11 queries, top 10)
+ System           P@5   P@10  R@10  RR    Time (ms)
+ ---------------  ----  ----  ----  ----  ---------
+ old index        0.47  0.31  0.73  0.85  2.3
+ Lucene           0.44  0.33  0.74  0.86  4.7
+ Lucene + fields  0.58  0.45  0.77  0.95  4.1
+ Google           0.44  0.24  0.68  0.80  -
+ a-z-animals      0.24  0.13  0.47  0.67  -
+
+P@10 per query
+ Query                                  Relevant  old index  Lucene  Lucene + fields  Google  a-z-animals
+ -------------------------------------  --------  ---------  ------  ---------------  ------  -----------
+ Q1 arctic fox                          1         0.10       0.10    0.10             0.10    0.10
+ Q2 Phoca rosmarus                      1         0.10       0.10    0.10             0.10    0.10
+ Q3 largest land snail                  1         0.10       0.10    0.10             0.10    0.10
+ Q4 fastest land animal                 2         0.20       0.20    0.10             0.20    0.10
+ Q5 glowing deep sea creature           12        0.70       0.70    0.80             0.50    0.30
+ Q6 smartest animal uses tools          25        0.70       0.90    1.00             0.20    0.10
+ Q7 large carnivore slovakia mountains  6         0.40       0.50    0.50             0.20    0.10
+ Q8 venomous suitable pet               36        0.00       0.00    0.90             0.00    0.20
+ Q9 slovakia extinct animals            6         0.50       0.60    0.60             0.60    0.00
+ Q10 critically endangered bird         6         0.40       0.20    0.50             0.40    0.10
+ Q11 dog breed from slovakia            2         0.20       0.20    0.20             0.20    0.20
+
+RR (1 / rank of the first relevant result) per query
+ Query                                  Relevant  old index  Lucene  Lucene + fields  Google  a-z-animals
+ -------------------------------------  --------  ---------  ------  ---------------  ------  -----------
+ Q1 arctic fox                          1         1.00       1.00    1.00             1.00    1.00
+ Q2 Phoca rosmarus                      1         0.33       1.00    1.00             1.00    0.33
+ Q3 largest land snail                  1         1.00       1.00    1.00             1.00    1.00
+ Q4 fastest land animal                 2         1.00       0.50    0.50             1.00    1.00
+ Q5 glowing deep sea creature           12        1.00       1.00    1.00             0.50    1.00
+ Q6 smartest animal uses tools          25        1.00       1.00    1.00             1.00    1.00
+ Q7 large carnivore slovakia mountains  6         1.00       1.00    1.00             0.33    1.00
+ Q8 venomous suitable pet               36        0.00       0.00    1.00             0.00    0.33
+ Q9 slovakia extinct animals            6         1.00       1.00    1.00             1.00    0.00
+ Q10 critically endangered bird         6         1.00       1.00    1.00             1.00    0.25
+ Q11 dog breed from slovakia            2         1.00       1.00    1.00             1.00    0.50
+
+Top 5 per query (* = relevant)
+
+Q1: One animal by its common name
+ text query:   arctic fox
+ Lucene query: arctic fox
+ Rank  old index    Lucene         Lucene + fields  Google       a-z-animals
+ ----  -----------  -------------  ---------------  -----------  -----------
+ 1     *arctic-fox  *arctic-fox    *arctic-fox      *arctic-fox  *arctic-fox
+ 2     marble-fox   arctic-hare    arctic-hare      fox          fox
+ 3     fox          fox            fox                           marble-fox
+ 4     arctic-hare  red-fox        red-fox
+ 5     red-fox      bat-eared-fox  bat-eared-fox
+
+Q2: One animal by its old scientific name (synonym), the name is only on Wikipedia
+ text query:   Phoca rosmarus
+ Lucene query: Phoca rosmarus
+ Rank  old index    Lucene       Lucene + fields  Google       a-z-animals
+ ----  -----------  -----------  ---------------  -----------  -------------
+ 1     harbor-seal  *walrus      *walrus          *walrus      seal
+ 2     seal         seal         seal             seal         harbor-seal
+ 3     *walrus      harbor-seal  harbor-seal      fur-seal     *walrus
+ 4                  harp-seal    harp-seal        harp-seal    pink-bollworm
+ 5                                                hooded-seal
+
+Q3: The largest land snail in the world
+ text query:   largest land snail
+ Lucene query: largest land snail
+ Rank  old index                  Lucene                     Lucene + fields            Google                     a-z-animals
+ ----  -------------------------  -------------------------  -------------------------  -------------------------  -------------------------
+ 1     *giant-african-land-snail  *giant-african-land-snail  *giant-african-land-snail  *giant-african-land-snail  *giant-african-land-snail
+ 2     snail                      snail                      snail                      snail                      snail
+ 3     volcano-snail              cone-snail                 cone-snail                 mollusk-2                  cone-snail
+ 4     assassin-snail-2           strawberry-hermit-crab     strawberry-hermit-crab                                mollusk-2
+ 5     cone-snail                 hammerhead-worm            hammerhead-worm                                       fire-bellied-toad
+
+Q4: The fastest land animals
+ text query:   fastest land animal
+ Lucene query: "fastest land animal"
+ Rank  old index       Lucene           Lucene + fields  Google      a-z-animals
+ ----  --------------  ---------------  ---------------  ----------  -----------
+ 1     *pronghorn      gentoo-penguin   falcon           *cheetah    *cheetah
+ 2     gentoo-penguin  *pronghorn       *cheetah         alligator   falcon
+ 3     falcon          sea-lion                          hare
+ 4     patas-monkey    crabeater-seal                    *pronghorn
+ 5     *cheetah        tasmanian-devil
+
+Q5: Glowing (bioluminescent) animals of the deep sea
+ text query:   glowing deep sea creature
+ Lucene query: (glowing OR bioluminescent) AND "deep sea"
+ Rank  old index            Lucene       Lucene + fields      Google          a-z-animals
+ ----  -------------------  -----------  -------------------  --------------  -------------------
+ 1     *football-fish       *dragonfish  *football-fish       pyrosome        *anglerfish
+ 2     *anglerfish          *viperfish   orange-roughy        *vampire-squid  *gulper-eel
+ 3     *vampire-squid       *gulper-eel  *viperfish           *kitefin-shark  *giant-siphonophore
+ 4     *dragonfish          shark        *dragonfish          *anglerfish     bearded-fireworm
+ 5     *cookiecutter-shark  *anglerfish  *stoplight-loosejaw  *football-fish  squid
+
+Q6: Intelligent animals which use tools
+ text query:   smartest animal uses tools
+ Lucene query: "tool use" OR "uses tools" OR "using tools"
+ Rank  old index            Lucene               Lucene + fields    Google       a-z-animals
+ ----  -------------------  -------------------  -----------------  -----------  -----------
+ 1     *hawaiian-crow       *sumatran-orangutan  *chimpanzee        *chimpanzee  *kea
+ 2     *sumatran-orangutan  *elephant            *orangutan         *orangutan
+ 3     *kea                 *kea                 *egyptian-vulture
+ 4     sea-lion             *hawaiian-crow       *green-heron
+ 5     *elephant            sea-lion             *octopus
+
+Q7: Large carnivores (order Carnivora) living in the mountains of Slovakia
+ text query:   large carnivore slovakia mountains
+ Lucene query: locations:slovakia AND (carnivora OR carnivore) AND mountains
+ Rank  old index       Lucene            Lucene + fields   Google                 a-z-animals
+ ----  --------------  ----------------  ----------------  ---------------------  -------------------------
+ 1     *brown-bear     *bear             *lynx             slovak-cuvac           *brown-bear
+ 2     *eurasian-wolf  *brown-bear       *bear             polish-tatra-sheepdog  german-wirehaired-pointer
+ 3     *eurasian-lynx  european-polecat  european-polecat  *bear                  chamois
+ 4     *wolf           *wolf             fox               *lynx                  ceratopsian
+ 5     golden-eagle    ural-owl          *wolf             aurochs                beewolf-wasp
+
+Q8: Venomous animals suitable as pets
+ text query:   venomous suitable pet
+ Lucene query: venomous AND as_pet:"suitable as pet" NOT nonvenomous NOT "non venomous"
+ Rank  old index            Lucene             Lucene + fields         Google           a-z-animals
+ ----  -------------------  -----------------  ----------------------  ---------------  --------------------------
+ 1     mussurana-snake      boiga              *lionfish               urutu-snake      boiga
+ 2     asp-caterpillar      nose-horned-viper  *scorpion               harlequin-snake  urutu-snake
+ 3     urutu-snake          colletts-snake     *spider                 parrot-snake     *brazilian-black-tarantula
+ 4     puss-caterpillar     urutu-snake        tailless-whip-scorpion  inland-taipan    aruba-rattlesnake
+ 5     eastern-brown-snake  aruba-rattlesnake  *false-water-cobra                       king-rat-snake
+
+Q9: Extinct animals which lived in Slovakia
+ text query:   slovakia extinct animals
+ Lucene query: locations:slovakia AND status:ex
+ Rank  old index                                 Lucene                                    Lucene + fields                           Google                                    a-z-animals
+ ----  ----------------------------------------  ----------------------------------------  ----------------------------------------  ----------------------------------------  -------------------------
+ 1     *aurochs                                  *cave-lion                                *cervalces-latifrons-broad-fronted-moose  *cave-bear                                ceratopsian
+ 2     *cervalces-latifrons-broad-fronted-moose  *aurochs                                  *woolly-rhinoceros                        *cave-lion                                brown-bear
+ 3     *cave-bear                                *woolly-rhinoceros                        *cave-bear                                *aurochs                                  german-wirehaired-pointer
+ 4     *cave-lion                                *neanderthal                              *neanderthal                              *cervalces-latifrons-broad-fronted-moose  chamois
+ 5     beaver                                    *cervalces-latifrons-broad-fronted-moose  *cave-lion                                *neanderthal                              transylvanian-hound
+
+Q10: Critically endangered birds
+ text query:   critically endangered bird
+ Lucene query: class:aves AND status:cr
+ Rank  old index                 Lucene                    Lucene + fields           Google                    a-z-animals
+ ----  ------------------------  ------------------------  ------------------------  ------------------------  ------------------
+ 1     *ivory-billed-woodpecker  *california-condor        *california-condor        *ivory-billed-woodpecker  onagadori-chicken
+ 2     golden-lancehead          *ivory-billed-woodpecker  *kakapo                   *california-condor        griffon-vulture
+ 3     *california-condor        myna-bird                 *ivory-billed-woodpecker  *kakapo                   mockingbird
+ 4     myna-bird                 mockingbird               *red-headed-vulture       *red-headed-vulture       *california-condor
+ 5     pied-tamarin              south-china-tiger         *hawaiian-crow
+
+Q11: Dog breeds from Slovakia
+ text query:   dog breed from slovakia
+ Lucene query: (slovakia OR slovak OR czechoslovakia) AND (dog OR wolfdog) AND domestication:domesticated
+ Rank  old index                 Lucene                     Lucene + fields            Google                     a-z-animals
+ ----  ------------------------  -------------------------  -------------------------  -------------------------  -------------------------
+ 1     *slovak-cuvac             *czechoslovakian-wolfdog   *czechoslovakian-wolfdog   *slovak-cuvac              german-wirehaired-pointer
+ 2     *czechoslovakian-wolfdog  raccoon-dog                *slovak-cuvac              *czechoslovakian-wolfdog   *czechoslovakian-wolfdog
+ 3     northern-inuit-dog        *slovak-cuvac              polish-tatra-sheepdog      transylvanian-hound        chamois
+ 4     appenzeller-dog           german-wirehaired-pointer  german-wirehaired-pointer  german-wirehaired-pointer  transylvanian-hound
+ 5     chinook-dog-breed         wolf                       cesky-terrier              raccoon-dog                *slovak-cuvac
+
+
+===== DokuWiki tables =====
+
+Summary (average over 11 queries, top 10)
+^ System ^ P@5 ^ P@10 ^ R@10 ^ RR ^ Time (ms) ^
+| old index | 0.47 | 0.31 | 0.73 | 0.85 | 2.3 |
+| Lucene | 0.44 | 0.33 | 0.74 | 0.86 | 4.7 |
+| Lucene + fields | 0.58 | 0.45 | 0.77 | 0.95 | 4.1 |
+| Google | 0.44 | 0.24 | 0.68 | 0.80 | - |
+| a-z-animals | 0.24 | 0.13 | 0.47 | 0.67 | - |
+
+P@10 per query
+^ Query ^ Relevant ^ old index ^ Lucene ^ Lucene + fields ^ Google ^ a-z-animals ^
+| Q1 arctic fox | 1 | 0.10 | 0.10 | 0.10 | 0.10 | 0.10 |
+| Q2 Phoca rosmarus | 1 | 0.10 | 0.10 | 0.10 | 0.10 | 0.10 |
+| Q3 largest land snail | 1 | 0.10 | 0.10 | 0.10 | 0.10 | 0.10 |
+| Q4 fastest land animal | 2 | 0.20 | 0.20 | 0.10 | 0.20 | 0.10 |
+| Q5 glowing deep sea creature | 12 | 0.70 | 0.70 | 0.80 | 0.50 | 0.30 |
+| Q6 smartest animal uses tools | 25 | 0.70 | 0.90 | 1.00 | 0.20 | 0.10 |
+| Q7 large carnivore slovakia mountains | 6 | 0.40 | 0.50 | 0.50 | 0.20 | 0.10 |
+| Q8 venomous suitable pet | 36 | 0.00 | 0.00 | 0.90 | 0.00 | 0.20 |
+| Q9 slovakia extinct animals | 6 | 0.50 | 0.60 | 0.60 | 0.60 | 0.00 |
+| Q10 critically endangered bird | 6 | 0.40 | 0.20 | 0.50 | 0.40 | 0.10 |
+| Q11 dog breed from slovakia | 2 | 0.20 | 0.20 | 0.20 | 0.20 | 0.20 |
+
+RR (1 / rank of the first relevant result) per query
+^ Query ^ Relevant ^ old index ^ Lucene ^ Lucene + fields ^ Google ^ a-z-animals ^
+| Q1 arctic fox | 1 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 |
+| Q2 Phoca rosmarus | 1 | 0.33 | 1.00 | 1.00 | 1.00 | 0.33 |
+| Q3 largest land snail | 1 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 |
+| Q4 fastest land animal | 2 | 1.00 | 0.50 | 0.50 | 1.00 | 1.00 |
+| Q5 glowing deep sea creature | 12 | 1.00 | 1.00 | 1.00 | 0.50 | 1.00 |
+| Q6 smartest animal uses tools | 25 | 1.00 | 1.00 | 1.00 | 1.00 | 1.00 |
+| Q7 large carnivore slovakia mountains | 6 | 1.00 | 1.00 | 1.00 | 0.33 | 1.00 |
+| Q8 venomous suitable pet | 36 | 0.00 | 0.00 | 1.00 | 0.00 | 0.33 |
+| Q9 slovakia extinct animals | 6 | 1.00 | 1.00 | 1.00 | 1.00 | 0.00 |
+| Q10 critically endangered bird | 6 | 1.00 | 1.00 | 1.00 | 1.00 | 0.25 |
+| Q11 dog breed from slovakia | 2 | 1.00 | 1.00 | 1.00 | 1.00 | 0.50 |
+
+Top 5 per query (* = relevant)
+
+Q1: One animal by its common name
+ text query:   arctic fox
+ Lucene query: arctic fox
+^ Rank ^ old index ^ Lucene ^ Lucene + fields ^ Google ^ a-z-animals ^
+| 1 | **arctic-fox** | **arctic-fox** | **arctic-fox** | **arctic-fox** | **arctic-fox** |
+| 2 | marble-fox | arctic-hare | arctic-hare | fox | fox |
+| 3 | fox | fox | fox |  | marble-fox |
+| 4 | arctic-hare | red-fox | red-fox |  |  |
+| 5 | red-fox | bat-eared-fox | bat-eared-fox |  |  |
+
+Q2: One animal by its old scientific name (synonym), the name is only on Wikipedia
+ text query:   Phoca rosmarus
+ Lucene query: Phoca rosmarus
+^ Rank ^ old index ^ Lucene ^ Lucene + fields ^ Google ^ a-z-animals ^
+| 1 | harbor-seal | **walrus** | **walrus** | **walrus** | seal |
+| 2 | seal | seal | seal | seal | harbor-seal |
+| 3 | **walrus** | harbor-seal | harbor-seal | fur-seal | **walrus** |
+| 4 |  | harp-seal | harp-seal | harp-seal | pink-bollworm |
+| 5 |  |  |  | hooded-seal |  |
+
+Q3: The largest land snail in the world
+ text query:   largest land snail
+ Lucene query: largest land snail
+^ Rank ^ old index ^ Lucene ^ Lucene + fields ^ Google ^ a-z-animals ^
+| 1 | **giant-african-land-snail** | **giant-african-land-snail** | **giant-african-land-snail** | **giant-african-land-snail** | **giant-african-land-snail** |
+| 2 | snail | snail | snail | snail | snail |
+| 3 | volcano-snail | cone-snail | cone-snail | mollusk-2 | cone-snail |
+| 4 | assassin-snail-2 | strawberry-hermit-crab | strawberry-hermit-crab |  | mollusk-2 |
+| 5 | cone-snail | hammerhead-worm | hammerhead-worm |  | fire-bellied-toad |
+
+Q4: The fastest land animals
+ text query:   fastest land animal
+ Lucene query: "fastest land animal"
+^ Rank ^ old index ^ Lucene ^ Lucene + fields ^ Google ^ a-z-animals ^
+| 1 | **pronghorn** | gentoo-penguin | falcon | **cheetah** | **cheetah** |
+| 2 | gentoo-penguin | **pronghorn** | **cheetah** | alligator | falcon |
+| 3 | falcon | sea-lion |  | hare |  |
+| 4 | patas-monkey | crabeater-seal |  | **pronghorn** |  |
+| 5 | **cheetah** | tasmanian-devil |  |  |  |
+
+Q5: Glowing (bioluminescent) animals of the deep sea
+ text query:   glowing deep sea creature
+ Lucene query: (glowing OR bioluminescent) AND "deep sea"
+^ Rank ^ old index ^ Lucene ^ Lucene + fields ^ Google ^ a-z-animals ^
+| 1 | **football-fish** | **dragonfish** | **football-fish** | pyrosome | **anglerfish** |
+| 2 | **anglerfish** | **viperfish** | orange-roughy | **vampire-squid** | **gulper-eel** |
+| 3 | **vampire-squid** | **gulper-eel** | **viperfish** | **kitefin-shark** | **giant-siphonophore** |
+| 4 | **dragonfish** | shark | **dragonfish** | **anglerfish** | bearded-fireworm |
+| 5 | **cookiecutter-shark** | **anglerfish** | **stoplight-loosejaw** | **football-fish** | squid |
+
+Q6: Intelligent animals which use tools
+ text query:   smartest animal uses tools
+ Lucene query: "tool use" OR "uses tools" OR "using tools"
+^ Rank ^ old index ^ Lucene ^ Lucene + fields ^ Google ^ a-z-animals ^
+| 1 | **hawaiian-crow** | **sumatran-orangutan** | **chimpanzee** | **chimpanzee** | **kea** |
+| 2 | **sumatran-orangutan** | **elephant** | **orangutan** | **orangutan** |  |
+| 3 | **kea** | **kea** | **egyptian-vulture** |  |  |
+| 4 | sea-lion | **hawaiian-crow** | **green-heron** |  |  |
+| 5 | **elephant** | sea-lion | **octopus** |  |  |
+
+Q7: Large carnivores (order Carnivora) living in the mountains of Slovakia
+ text query:   large carnivore slovakia mountains
+ Lucene query: locations:slovakia AND (carnivora OR carnivore) AND mountains
+^ Rank ^ old index ^ Lucene ^ Lucene + fields ^ Google ^ a-z-animals ^
+| 1 | **brown-bear** | **bear** | **lynx** | slovak-cuvac | **brown-bear** |
+| 2 | **eurasian-wolf** | **brown-bear** | **bear** | polish-tatra-sheepdog | german-wirehaired-pointer |
+| 3 | **eurasian-lynx** | european-polecat | european-polecat | **bear** | chamois |
+| 4 | **wolf** | **wolf** | fox | **lynx** | ceratopsian |
+| 5 | golden-eagle | ural-owl | **wolf** | aurochs | beewolf-wasp |
+
+Q8: Venomous animals suitable as pets
+ text query:   venomous suitable pet
+ Lucene query: venomous AND as_pet:"suitable as pet" NOT nonvenomous NOT "non venomous"
+^ Rank ^ old index ^ Lucene ^ Lucene + fields ^ Google ^ a-z-animals ^
+| 1 | mussurana-snake | boiga | **lionfish** | urutu-snake | boiga |
+| 2 | asp-caterpillar | nose-horned-viper | **scorpion** | harlequin-snake | urutu-snake |
+| 3 | urutu-snake | colletts-snake | **spider** | parrot-snake | **brazilian-black-tarantula** |
+| 4 | puss-caterpillar | urutu-snake | tailless-whip-scorpion | inland-taipan | aruba-rattlesnake |
+| 5 | eastern-brown-snake | aruba-rattlesnake | **false-water-cobra** |  | king-rat-snake |
+
+Q9: Extinct animals which lived in Slovakia
+ text query:   slovakia extinct animals
+ Lucene query: locations:slovakia AND status:ex
+^ Rank ^ old index ^ Lucene ^ Lucene + fields ^ Google ^ a-z-animals ^
+| 1 | **aurochs** | **cave-lion** | **cervalces-latifrons-broad-fronted-moose** | **cave-bear** | ceratopsian |
+| 2 | **cervalces-latifrons-broad-fronted-moose** | **aurochs** | **woolly-rhinoceros** | **cave-lion** | brown-bear |
+| 3 | **cave-bear** | **woolly-rhinoceros** | **cave-bear** | **aurochs** | german-wirehaired-pointer |
+| 4 | **cave-lion** | **neanderthal** | **neanderthal** | **cervalces-latifrons-broad-fronted-moose** | chamois |
+| 5 | beaver | **cervalces-latifrons-broad-fronted-moose** | **cave-lion** | **neanderthal** | transylvanian-hound |
+
+Q10: Critically endangered birds
+ text query:   critically endangered bird
+ Lucene query: class:aves AND status:cr
+^ Rank ^ old index ^ Lucene ^ Lucene + fields ^ Google ^ a-z-animals ^
+| 1 | **ivory-billed-woodpecker** | **california-condor** | **california-condor** | **ivory-billed-woodpecker** | onagadori-chicken |
+| 2 | golden-lancehead | **ivory-billed-woodpecker** | **kakapo** | **california-condor** | griffon-vulture |
+| 3 | **california-condor** | myna-bird | **ivory-billed-woodpecker** | **kakapo** | mockingbird |
+| 4 | myna-bird | mockingbird | **red-headed-vulture** | **red-headed-vulture** | **california-condor** |
+| 5 | pied-tamarin | south-china-tiger | **hawaiian-crow** |  |  |
+
+Q11: Dog breeds from Slovakia
+ text query:   dog breed from slovakia
+ Lucene query: (slovakia OR slovak OR czechoslovakia) AND (dog OR wolfdog) AND domestication:domesticated
+^ Rank ^ old index ^ Lucene ^ Lucene + fields ^ Google ^ a-z-animals ^
+| 1 | **slovak-cuvac** | **czechoslovakian-wolfdog** | **czechoslovakian-wolfdog** | **slovak-cuvac** | german-wirehaired-pointer |
+| 2 | **czechoslovakian-wolfdog** | raccoon-dog | **slovak-cuvac** | **czechoslovakian-wolfdog** | **czechoslovakian-wolfdog** |
+| 3 | northern-inuit-dog | **slovak-cuvac** | polish-tatra-sheepdog | transylvanian-hound | chamois |
+| 4 | appenzeller-dog | german-wirehaired-pointer | german-wirehaired-pointer | german-wirehaired-pointer | transylvanian-hound |
+| 5 | chinook-dog-breed | wolf | cesky-terrier | raccoon-dog | **slovak-cuvac** |
